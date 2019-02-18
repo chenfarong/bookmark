@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>游戏防黑客</title>
+  </head>
+  <body>
+    <h1>游戏防黑客实战</h1>
+    <br>
+    <h2>一、防外挂</h2>
+    <ul>
+      <li>从策划角度就需要考虑外挂肯定存在，并且不严重依赖技术手段来防止。</li>
+      <li>心理战，让黑客感到疲惫，使之放弃</li>
+      <li>客户端防外挂</li>
+      <li>服务端防外挂</li>
+      <li>客服人工参与</li>
+      <li>玩家举报<br>
+      </li>
+    </ul>
+    <br>
+    <h2>二、技术方式防外挂</h2>
+    <br>
+    - 重要点<br>
+    <ul>
+      <li>处理外挂前进行数据保护</li>
+      <li>一定要延时处理</li>
+      <li>引流到黑洞</li>
+      <li>偶尔放行，规律不容易让黑客觉察<br>
+      </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    - 行为检测<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * 指令会话，有些指令肯定成对出现，如果在玩家在线过程中，出现了非成对时<br>
+    &nbsp;&nbsp;&nbsp; * 移动位置超出合理区间<br>
+    &nbsp;&nbsp;&nbsp; * 参数数据不在合理范围（策划）<br>
+    &nbsp;&nbsp;&nbsp; * 同一个IP地址在时间断内允许执行相同命令次数（创角等重要指令）<br>
+    &nbsp;&nbsp;&nbsp; * IP地址同时连接数量限制<br>
+    &nbsp;&nbsp;&nbsp; * 密码验证错误次数<br>
+    &nbsp;&nbsp;&nbsp; * 指令密集度（战斗）<br>
+    &nbsp;&nbsp;&nbsp; * 客服端在指定的命令后面加上一组无效的附加指令（用来检测是否真实客户端，延时提交附加指令）<br>
+    &nbsp;&nbsp;&nbsp; * 指令需求前置命令存在（如果不存在前置命令，判断为非法）<br>
+    &nbsp;&nbsp;&nbsp; * <font color="#cc0000">延时处理外挂，避免让外挂开发者马上发现<br>
+      &nbsp;&nbsp;&nbsp; <font color="#000000">*
+        向客户端发送校样命令，客户端在指定时间段内回复此命令<br>
+        &nbsp;&nbsp;&nbsp; * 操作时序<br>
+      </font></font><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    - IP黑白名单<br>
+    <br>
+    <br>
+    <h2>三、数据安全</h2>
+    - 盗号<br>
+    - 设备特征码<br>
+    - 二次验证<br>
+    <br>
+    <br>
+    <h2>四、常见的外挂手段</h2>
+    <ul>
+      <li>按键精灵</li>
+      <li>协议分析</li>
+      <li>内存修改</li>
+      <li>时间修改</li>
+      <li>代码修改</li>
+      <li>资源修改<br>
+      </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
