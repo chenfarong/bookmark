@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="canonical"
+      href="https://blog.csdn.net/qq_25821067/article/details/79120222">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,
+      user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="alternate" media="handheld" href="#">
+    <meta name="shenma-site-verification"
+      content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <meta name="csdn-baidu-search"
+      content="{&quot;autorun&quot;:true,&quot;install&quot;:true,&quot;keyword&quot;:&quot;Linux
+      Centos 7 systemctl（systemd）新增加service服务，并且开机启动 - 花2不谢&quot;}">
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT
+      ICON">
+    <title>Linux Centos 7 systemctl（systemd）新增加service服务，并且开机启动 - 花2不谢 -
+      CSDN博客</title>
+    <link rel="stylesheet"
+href="https://csdnimg.cn/release/phoenix/template/css/detail-a0a545005c.min.css">
+    <link rel="stylesheet"
+href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9b39979775.min.css">
+    <script type="text/javascript">
+        var username = "qq_25821067";
+        var blog_address = "https://blog.csdn.net/qq_25821067";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/qq_25821067/article/details/79120222"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "Linux Centos 7  systemctl（systemd）新增加service服务，并且开机启动 - 花2不谢";
+        var articleID = "79120222";
+        
+        var nickName = "qq_25821067";
+        var isCorporate = false;
+        var subDomainBlogUrl = "https://blog.csdn.net/"
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <script src="//g.csdnimg.cn/fixed-sidebar/1.1.3/fixed-sidebar.js" type="text/javascript"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.2.4/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+    <link rel="stylesheet"
+      href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+  </head>
+  <!-- nodata 第三栏接口无数据时样式不变 -->
+  <body class="nodata ">
+    <link rel="stylesheet"
+href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+    <div id="kp_box_476" data-pid="476"
+data-track-view="{&quot;mod&quot;:&quot;kp_popu_476-794&quot;,&quot;con&quot;:&quot;,,&quot;}"
+data-track-click="{&quot;mod&quot;:&quot;kp_popu_476-794&quot;,&quot;con&quot;:&quot;,,&quot;}">
+      <script src="//csdnimg.cn/public/common/indexSuperise/1.0.3/indexSuperise.js?20190103190825"></script>
+      <script>
+ window.csdn.indexSuperise({
+      smallMoveImg: '//ubmcmm.baidustatic.com/media/v1/0f000ji9GQBTQif4KlS1n6.jpg',
+      bigMoveImg: '//ubmcmm.baidustatic.com/media/v1/0f000Dd29O15Im4ZGHXmF0.jpg',
+     link:'//bss.csdn.net/m/topic/blog_star2018/index?utm_source=bloghudong',
+boxStyle:140,
+trackSuperId:476,
+smallMove:'notMove',  
+trackSId:794
+    });
+</script></div>
+    <link rel="stylesheet"
+href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+    <link rel="stylesheet"
+      href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+    <script type="text/javascript">
+	// 容错处理
+	var NEWS_FEED = function(){}
+</script>
+    <script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+    <script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+    <div style="display:none;"> <img src=""
+onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'></div>
+    <link rel="stylesheet"
+href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css">
+    <script src="https://dup.baidustatic.com/js/ds.js"></script>
+    <div class="container clearfix" id="mainBox">
+      <div class="recommend-right">
+        <ul class="recommend-fixed-box">
+        </ul>
+      </div>
+      <main>
+        <div class="blog-content-box">
+          <div class="article-header-box">
+            <div class="article-header">
+              <div class="article-title-box"> <span class="article-type
+                  type-1 float-left">原</span>
+                <h1 class="title-article">Linux Centos 7
+                  systemctl（systemd）新增加service服务，并且开机启动</h1>
+              </div>
+              <div class="article-info-box">
+                <div class="article-bar-top"> <span class="time">2018年
+                    01月21日 14:44:39</span> <a class="follow-nickName"
+                    href="https://me.csdn.net/qq_25821067"
+                    target="_blank">qq_25821067</a> <span
+                    class="read-count">阅读数：10846</span> </div>
+                <div class="operating"> </div>
+              </div>
+            </div>
+          </div>
+          <article class="baidu_pl">
+            <div id="article_content" class="article_content clearfix
+              csdn-tracking-statistics" data-pid="blog"
+              data-mod="popu_307" data-dsm="post">
+              <div class="article-copyright">
+                <svg class="icon" title="CSDN认证原创" aria-hidden="true"
+                  style="width:53px; height: 18px; vertical-align:
+                  -4px;">
+                  <use xlink:href="#CSDN_Cert"></use> </svg>
+                版权声明：版权是什么东西，看得上的随便转。
+                https://blog.csdn.net/qq_25821067/article/details/79120222
+              </div>
+              <link rel="stylesheet"
+href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-f57960eb32.css">
+              <div class="htmledit_views" id="content_views">
+                <p>centos 7中采用了systemd控制系统服务，更加简单，以前启动服务需要 service xxxx
+                  start|stop等。现在需要的是systemctl start|stop
+                  xxx。比如我配置的启动tomcat，systemctl start
+                  tomcat。十分方便。以前是在，现在直接在/usr/lib/systemd/system里面新建一个tomcat.service，内容如下：</p>
+                <p></p>
+                <pre><code class="language-plain">[Unit]  
+Description=tomcatapi  
+After=network.target  
+   
+[Service]  
+Type=forking  
+ExecStart=/usr/local/soft/tomcat/tomcat8/bin/startup.sh  
+ExecReload=  
+ExecStop=/usr/local/soft/tomcat/tomcat8/bin/shutdown.sh  
+PrivateTmp=true  
+   
+[Install]  
+WantedBy=multi-user.target  
+
+</code></pre>
+                <br>
+                然后给这个tomcat.service 文件chomod
+                +x权限即可！最后在重启下systemctl，命令如下：<span style="color:#ff0000;">systemctl
+                  daemon-reload</span>
+                <p><span style="color:#000000;">最后就可以通过systemctl start
+                    tomcat启动啦！</span></p>
+                <p><span style="color:#000000;">上面的tomcat.service需要按需更改。
+                    里面的路径不一样。</span></p>
+                <p><span style="color:#000000;">以下是转载的：</span></p>
+                <p><span style="color:#000000;"></span></p>
+                <p style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  设置分为三个部份</p>
+                <ul class="list-paddingleft-2">
+                  <li style="list-style-position:inside;">
+                    <p>[Unit]： unit 本身的说明，以及与其他相依 daemon
+                      的设置，包括在什么服务之后才启动此 unit 之类的设置值；</p>
+                  </li>
+                  <li style="list-style-position:inside;">
+                    <p>[Service], [Socket], [Timer], [Mount],
+                      [Path]..：不同的 unit type 就得要使用相对应的设置项目。我们拿的是
+                      sshd.service 来当范本，所以这边就使用 [Service] 来设置。
+                      这个项目内主要在规范服务启动的脚本、环境配置文件文件名、重新启动的方式等等。</p>
+                  </li>
+                  <li style="list-style-position:inside;">
+                    <p>[Install]：这个项目就是将此 unit 安装到哪个 target 里面去的意思！</p>
+                  </li>
+                </ul>
+                <p style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  至于配置文件内有些设置规则还是得要说明一下：</p>
+                <ul class="list-paddingleft-2">
+                  <li style="list-style-position:inside;">
+                    <p>设置项目通常是可以重复的，例如我可以重复设置两个 After
+                      在配置文件中，不过，后面的设置会取代前面的喔！因此，如果你想要将设置值归零， 可以使用类似“
+                      After= ”的设置，亦即该项目的等号后面什么都没有，就将该设置归零了 （reset）。</p>
+                  </li>
+                  <li style="list-style-position:inside;">
+                    <p>如果设置参数需要有“是/否”的项目 （布林值, boolean），你可以使用 1, yes,
+                      true, on 代表启动，用 0, no, false, off 代表关闭！随你喜好选择啰！</p>
+                  </li>
+                  <li style="list-style-position:inside;">
+                    <p>空白行、开头为 # 或 ; 的那一行，都代表注解！</p>
+                  </li>
+                </ul>
+                <p style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  每个部份里面还有很多的设置细项，我们使用一个简单的表格来说明每个项目好了！</p>
+                <table style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  <thead><tr class="firstRow">
+                      <th style="border-color:rgb(136,136,136);"
+                        width="20%">[Unit] 部份</th>
+                      <th style="border-color:rgb(136,136,136);"
+                        width="80%">&nbsp;</th>
+                    </tr>
+                  </thead><tbody>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="20%">设置参数</td>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="80%">参数意义说明</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Description</td>
+                      <td style="border-color:rgb(136,136,136);">就是当我们使用
+                        systemctl list-units 时，会输出给管理员看的简易说明！当然，使用
+                        systemctl status 输出的此服务的说明，也是这个项目！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Documentation</td>
+                      <td style="border-color:rgb(136,136,136);">这个项目在提供
+                        管理员能够进行进一步的文件查询的功能！提供的文件可以是如下的数据：<code
+                          style="font-family:Menlo, Monaco, Consolas,
+                          'Andale Mono', 'lucida console', 'Courier
+                          New', monospace;">Documentation=http://www....</code>&nbsp;<code
+                          style="font-family:Menlo, Monaco, Consolas,
+                          'Andale Mono', 'lucida console', 'Courier
+                          New', monospace;">Documentation=man:sshd（8）</code>&nbsp;<code
+                          style="font-family:Menlo, Monaco, Consolas,
+                          'Andale Mono', 'lucida console', 'Courier
+                          New', monospace;">Documentation=file:/etc/ssh/sshd_config</code></td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">After</td>
+                      <td style="border-color:rgb(136,136,136);">说明此
+                        unit 是在哪个 daemon
+                        启动之后才启动的意思！基本上仅是说明服务启动的顺序而已，并没有强制要求里头的服务一定要启动后此
+                        unit 才能启动。 以 sshd.service 的内容为例，该文件提到 After 后面有
+                        network.target 以及 sshd-keygen.service，但是若这两个
+                        unit 没有启动而强制启动 sshd.service 的话， 那么 sshd.service
+                        应该还是能够启动的！这与 Requires 的设置是有差异的喔！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Before</td>
+                      <td style="border-color:rgb(136,136,136);">与 After
+                        的意义相反，是在什么服务启动前最好启动这个服务的意思。不过这仅是规范服务启动的顺序，并非强制要求
+                        的意思。</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Requires</td>
+                      <td style="border-color:rgb(136,136,136);">明确的定义此
+                        unit 需要在哪个 daemon
+                        启动后才能够启动！就是设置相依服务啦！如果在此项设置的前导服务没有启动，那么此 unit
+                        就不会被启动！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Wants</td>
+                      <td style="border-color:rgb(136,136,136);">与
+                        Requires 刚好相反，规范的是这个 unit
+                        之后最好还要启动什么服务比较好的意思！不过，并没有明确的规范就是了！主要的目的是希望创建让使用者比较好操作的环境。
+                        因此，这个 Wants 后面接的服务如果没有启动，其实不会影响到这个 unit 本身！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Conflicts</td>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="1231">代表冲突的服务！亦即这个项目后面接的服务如果有启动，那么我们这个
+                        unit 本身就不能启动！我们 unit 有启动，则此项目后的服务就不能启动！
+                        反正就是冲突性的检查啦！</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  接下来了解一下在 [Service] 当中有哪些项目可以使用！</p>
+                <table style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  <thead><tr class="firstRow">
+                      <th style="border-color:rgb(136,136,136);"
+                        width="20%">[Service] 部份</th>
+                      <th style="border-color:rgb(136,136,136);"
+                        width="80%">&nbsp;</th>
+                    </tr>
+                  </thead><tbody>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="20%">设置参数</td>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="80%">参数意义说明</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Type</td>
+                      <td style="border-color:rgb(136,136,136);">说明这个
+                        daemon 启动的方式，会影响到 ExecStart 喔！一般来说，有下面几种类型
+                        simple：默认值，这个 daemon 主要由 ExecStart
+                        接的指令串来启动，启动后常驻于内存中。forking：由 ExecStart 启动的程序通过
+                        spawns 延伸出其他子程序来作为此 daemon
+                        的主要服务。原生的父程序在启动结束后就会终止运行。 传统的 unit 服务大多属于这种项目，例如
+                        httpd 这个 WWW 服务，当 httpd 的程序因为运行过久因此即将终结了，则
+                        systemd 会再重新生出另一个子程序持续运行后，
+                        再将父程序删除。据说这样的性能比较好！！oneshot：与 simple
+                        类似，不过这个程序在工作完毕后就结束了，不会常驻在内存中。dbus：与 simple
+                        类似，但这个 daemon 必须要在取得一个 D-Bus
+                        的名称后，才会继续运行！因此设置这个项目时，通常也要设置 BusName= 才行！idle：与
+                        simple 类似，意思是，要执行这个 daemon
+                        必须要所有的工作都顺利执行完毕后才会执行。这类的 daemon
+                        通常是开机到最后才执行即可的服务！比较重要的项目大概是 simple, forking 与
+                        oneshot 了！毕竟很多服务需要子程序
+                        （forking），而有更多的动作只需要在开机的时候执行一次（oneshot），例如文件系统的检查与挂载啊等等的。</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">EnvironmentFile</td>
+                      <td style="border-color:rgb(136,136,136);">可以指定启动脚
+                        本的环境配置文件！例如 sshd.service 的配置文件写入到
+                        /etc/sysconfig/sshd 当中！你也可以使用 Environment=
+                        后面接多个不同的 Shell 变量来给予设置！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">ExecStart</td>
+                      <td style="border-color:rgb(136,136,136);">就是实际执行此
+                        daemon 的指令或脚本程序。你也可以使用 ExecStartPre （之前） 以及
+                        ExecStartPost （之后） 两个设置项目来在实际启动服务前，进行额外的指令行为。
+                        但是你得要特别注意的是，指令串仅接受“指令 参数 参数...”的格式，不能接受 &lt;,
+                        &gt;, &gt;&gt;, |, &amp; 等特殊字符，很多的 bash 语法也不支持喔！
+                        所以，要使用这些特殊的字符时，最好直接写入到指令脚本里面去！不过，上述的语法也不是完全不能用，亦
+                        即，若要支持比较完整的 bash 语法，那你得要使用 Type=oneshot 才行喔！ 其他的
+                        Type 才不能支持这些字符。</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">ExecStop</td>
+                      <td style="border-color:rgb(136,136,136);">与
+                        systemctl stop 的执行有关，关闭此服务时所进行的指令。</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">ExecReload</td>
+                      <td style="border-color:rgb(136,136,136);">与
+                        systemctl reload 有关的指令行为</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Restart</td>
+                      <td style="border-color:rgb(136,136,136);">当设置
+                        Restart=1 时，则当此 daemon 服务终止后，会再次的启动此服务。举例来说，如果你在
+                        tty2 使用文字界面登陆，操作完毕后登出，基本上，这个时候 tty2 就已经结束服务了。
+                        但是你会看到屏幕又立刻产生一个新的 tty2 的登陆画面等待你的登陆！那就是 Restart
+                        的功能！除非使用 systemctl 强制将此服务关闭，否则这个服务会源源不绝的一直重复产生！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">RemainAfterExit</td>
+                      <td style="border-color:rgb(136,136,136);">当设置为
+                        RemainAfterExit=1 时，则当这个 daemon
+                        所属的所有程序都终止之后，此服务会再尝试启动。这对于 Type=oneshot 的服务很有帮助！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">TimeoutSec</td>
+                      <td style="border-color:rgb(136,136,136);">若这个服务在启
+                        动或者是关闭时，因为某些缘故导致无法顺利“正常启动或正常结束”的情况下，则我们要等多久才进入“强
+                        制结束”的状态！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">KillMode</td>
+                      <td style="border-color:rgb(136,136,136);">可以是
+                        process, control-group, none 的其中一种，如果是 process 则
+                        daemon 终止时，只会终止主要的程序 （ExecStart 接的后面那串指令），如果是
+                        control-group 时， 则由此 daemon 所产生的其他 control-group
+                        的程序，也都会被关闭。如果是 none 的话，则没有程序会被关闭喔！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">RestartSec</td>
+                      <td style="border-color:rgb(136,136,136);">与
+                        Restart 有点相关性，如果这个服务被关闭，然后需要重新启动时，大概要 sleep
+                        多少时间再重新启动的意思。默认是 100ms （毫秒）。</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  最后，再来看看那么 Install 内还有哪些项目可用？</p>
+                <table style="color:rgb(34,34,34);font-family:'Helvetica
+                  Neue', Helvetica, Arial, sans-serif;font-size:13px;">
+                  <thead><tr class="firstRow">
+                      <th style="border-color:rgb(136,136,136);"
+                        width="20%">[Install] 部份</th>
+                      <th style="border-color:rgb(136,136,136);"
+                        width="80%">&nbsp;</th>
+                    </tr>
+                  </thead><tbody>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="20%">设置参数</td>
+                      <td style="border-color:rgb(136,136,136);"
+                        width="80%">参数意义说明</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">WantedBy</td>
+                      <td style="border-color:rgb(136,136,136);">这个设置后面接
+                        的大部分是 *.target unit ！意思是，这个 unit 本身是附挂在哪一个
+                        target unit 下面的！一般来说，大多的服务性质的 unit 都是附挂在
+                        multi-user.target 下面！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Also</td>
+                      <td style="border-color:rgb(136,136,136);">当目前这个
+                        unit 本身被 enable 时，Also 后面接的 unit 也请 enable
+                        的意思！也就是具有相依性的服务可以写在这里呢！</td>
+                    </tr>
+                    <tr>
+                      <td style="border-color:rgb(136,136,136);">Alias</td>
+                      <td style="border-color:rgb(136,136,136);">进行一个链接的
+                        别名的意思！当 systemctl enable 相关的服务时，则此服务会进行链接文件的创建！以
+                        multi-user.target 为例，这个家伙是用来作为默认操作环境
+                        default.target 的规划， 因此当你设置用成 default.target 时，这个
+                        /etc/systemd/system/default.target 就会链接到
+                        /usr/lib/systemd/system/multi-user.target 啰！</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </div>
+          </article>
+        </div>
+        <script>(function(){
+    function collection(){
+      if (currentUserName) {
+        if (!$(this).hasClass("liked")) {
+          $.ajax({
+            url: 'https://my.csdn.net/my/favorite/do_add/2',
+            dataType: 'json',
+            type: 'POST',
+            xhrFields: {
+              withCredentials: true
+            },
+            data: {
+              title: articleTit,
+              url: curentUrl,
+              share: 1,
+              map_name: ''
+            },
+            success: function(data) {
+              if (data.succ == 1) {
+                $('.btn-bookmark').addClass("liked");
+                $('.article-footer-bookmark-btn').addClass("liked").children('span').text('已收藏');
+                
+                alert('收藏成功,可以在个人中心查看我的收藏');
+              } else {
+                if (data.msg === "您已经收藏过") {
+                  $('.btn-bookmark').addClass("liked");
+                  $('.article-footer-bookmark-btn').addClass("liked").children('span').text('已收藏');
+                }
+                alert(data.msg);
+              }
+            }
+          });
+        } else {
+          alert('您已经收藏过');
+        }
+      } else {
+        window.csdn.loginBox.show();
+      }
+    }
+    window.csdn = window.csdn ? window.csdn : {};
+    window.csdn.articleCollection = collection;
+    function setArticleH(btnReadmore,posi){
+      var winH = $(window).height();
+      var articleBox = $("div.article_content");
+      var artH = articleBox.height();
+      if(artH > winH*posi){
+        articleBox.css({
+          'height':winH*posi+'px',
+          'overflow':'hidden'
+        })
+        btnReadmore.click(function(){
+          articleBox.removeAttr("style");
+          $(this).parent().remove()
+        })
+      }else{
+        btnReadmore.parent().remove()
+      }
+    }
+    var btnReadmore = $("#btn-readmore");
+    $('.article-footer-bookmark-btn').click(window.csdn.articleCollection)
+    if(btnReadmore.length>0){
+      if(currentUserName){
+        setArticleH(btnReadmore,3);
+      }else{
+        setArticleH(btnReadmore,1.2);
+      }
+    }else{
+      $('.hide-article-box').addClass('hide-article-style');
+    }
+  })()
+</script>
+        <script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script> <br>
+        <br>
+      </main>
+      <script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+      <script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script></div>
+    <br>
+    <div id="loginWrap" style="display:none"></div>
+    <div class="tool-box">
+      <ul class="meau-list">
+        <li class="btn-like-box long-width"> <button class="
+            long-height hover-box btn-like " title="点赞">
+            <svg class="icon active hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-thumbsup-ok"></use> </svg>
+            <svg class="icon no-active hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-thumbsup"></use> </svg> <span
+              class="hover-show text-box text"> <span class="no-active">点
+                赞</span> <span class="active">取消点赞</span> </span>
+            <p>1</p>
+          </button> </li>
+        <li class=""> <a class="btn-comments long-height hover-box"
+            title="写评论" href="#commentBox">
+            <svg class="icon hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-comments"></use> </svg> <span
+              class="hover-show text">评论</span>
+            <p class=""> 1 </p>
+          </a> </li>
+        <li class="toc-container-box" id="liTocBox"> <button
+            class="btn-toc low-height hover-box" title="目录">
+            <svg class="icon hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-contents"></use> </svg> <span
+              class="hover-show text">目录</span> </button>
+          <div class="toc-container">
+            <div class="pos-box">
+              <div class="icon-arrow"></div>
+              <div class="scroll-box">
+                <div class="toc-box"></div>
+              </div>
+            </div>
+            <div class="opt-box"> <button class="btn-opt prev nomore"
+                title="向上">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#csdnc-chevronup"></use> </svg> </button>
+              <button class="btn-opt next">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#csdnc-chevrondown"></use> </svg> </button>
+            </div>
+          </div>
+        </li>
+        <li> <button class="btn-bookmark low-height hover-box"
+            title="收藏">
+            <svg class="icon active hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-bookmark-ok"></use> </svg>
+            <svg class="icon no-active hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-bookmark"></use> </svg> <span
+              class="hover-show text">收藏</span>
+            <!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> --> </button> </li>
+        <li class="bdsharebuttonbox">
+          <div class="weixin-qr btn-comments low-height hover-box"> <a
+              href="#" class="bds_weixin clear-share-style"
+              data-cmd="weixin" title="手机看"></a>
+            <svg class="icon hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-usephone"></use> </svg> <span
+              class="hover-show text text3"> 手机看 </span> </div>
+        </li>
+        <li class="widescreen-hide"> <a class="btn-comments low-height
+            hover-box"
+            href="https://blog.csdn.net/qq_25821067/article/details/79016296"
+            title="Linux后台执行jar程序">
+            <svg class="icon hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-chevronleft"></use> </svg> <span
+              class="hover-show text text3">上一篇</span> </a> </li>
+        <li class="widescreen-hide"> <a class="btn-comments hover-box
+            low-height"
+            href="https://blog.csdn.net/qq_25821067/article/details/79610008"
+            title="servlet2.5+Spring5 springMVC5 +Log4J2配置">
+            <svg class="icon hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-chevronright"></use> </svg> <span
+              class="hover-show text text3">下一篇</span> </a> </li>
+        <!-- 宽屏更多按钮 -->
+        <li class="widescreen-more"> <a class="btn-comments
+            chat-ask-button low-height hover-box" title="快问"
+            href="#chatqa">
+            <svg class="icon hover-hide" aria-hidden="true">
+              <use xlink:href="#csdnc-more"></use> </svg> <span
+              class="hover-show text">更多</span> </a>
+          <ul class="widescreen-more-box">
+            <li class="widescreen-more"> <a class="btn-comments
+                low-height hover-box"
+                href="https://blog.csdn.net/qq_25821067/article/details/79016296"
+                title="Linux后台执行jar程序">
+                <svg class="icon hover-hide" aria-hidden="true">
+                  <use xlink:href="#csdnc-chevronleft"></use> </svg> <span
+                  class="hover-show text text3">上一篇</span> </a> </li>
+            <li class="widescreen-more"> <a class="btn-comments
+                hover-box low-height"
+                href="https://blog.csdn.net/qq_25821067/article/details/79610008"
+                title="servlet2.5+Spring5 springMVC5 +Log4J2配置">
+                <svg class="icon hover-hide" aria-hidden="true">
+                  <use xlink:href="#csdnc-chevronright"></use> </svg> <span
+                  class="hover-show text text3">下一篇</span> </a> </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+    <script>
+    var recommendCount = 74;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 12;
+    var articleId = "79120222";
+    var commentscount = 1;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/qq_25821067/article/details/79120222";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "Linux Centos 7  systemctl（systemd）新增加service服务，并且开机启动 - 花2不谢";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = '';
+		var highlight = ["linux","centos","systemctl","systemd","\u589e\u52a0","service","\u670d\u52a1","\u5e76\u4e14","\u5f00\u673a\u542f\u52a8"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"bluishglc","nick_name":"bluishglc","avatar":"https:\/\/avatar.csdn.net\/6\/7\/A\/3_bluishglc.jpg","is_expert":true,"article_count":315,"rank":"234"},{"user_name":"i_vic","nick_name":"\u91c7\u83c7\u51c9\u7684\u5c0f\u8611\u83c7\u4e36","avatar":"https:\/\/avatar.csdn.net\/2\/4\/B\/3_i_vic.jpg","is_expert":false,"article_count":15,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"wind_2307154495","nick_name":"hello_dev","avatar":"https:\/\/avatar.csdn.net\/6\/6\/B\/3_wind_2307154495.jpg","is_expert":false,"article_count":9,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"u014464624","nick_name":"\u6df1\u6d77\u9c7c\u6d41\u6d6a\u53bb\u4e86\u5317\u51b0\u6d0b","avatar":"https:\/\/avatar.csdn.net\/6\/8\/3\/3_u014464624.jpg","is_expert":false,"article_count":31,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"wz947324","nick_name":"jet_wong","avatar":"https:\/\/avatar.csdn.net\/8\/7\/6\/3_wz947324.jpg","is_expert":false,"article_count":159,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"hemowolf","nick_name":"\u5c0f\u7070\u72fc","avatar":"https:\/\/avatar.csdn.net\/A\/2\/A\/3_hemowolf.jpg","is_expert":false,"article_count":15,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"qazx123q","nick_name":"opfano_o","avatar":"https:\/\/avatar.csdn.net\/C\/E\/A\/3_qazx123q.jpg","is_expert":false,"article_count":89,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"qq_29891615","nick_name":"qq_29891615","avatar":"https:\/\/avatar.csdn.net\/4\/9\/5\/3_qq_29891615.jpg","is_expert":false,"article_count":5,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"sunggff","nick_name":"sunggff","avatar":"https:\/\/avatar.csdn.net\/2\/3\/8\/3_sunggff.jpg","is_expert":false,"article_count":15,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"fanchoulu0315","nick_name":"\u4e0d\u5fd8\u5f53\u521d","avatar":"https:\/\/avatar.csdn.net\/0\/1\/1\/3_fanchoulu0315.jpg","is_expert":false,"article_count":27,"rank":"\u5343\u91cc\u4e4b\u5916"}];
+	var articleType = 1;
+	var CopyrightContent = '版权是什么东西，看得上的随便转。';
+</script>
+    <script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+    <script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+    <script src="https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201811201455"></script>
+    <script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+    <script src="//g.csdnimg.cn/baidu-search/1.0.0/baidu-search.js" type="text/javascript"></script>
+    <div class="fourth_column">
+      <div class="title-box"> <b class="title">猿学习</b> <span
+          class="fourth_column_close">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#csdnc-times"></use> </svg> </span> </div>
+      <ul class="">
+        <li>
+          <div id="kp_box_456" data-pid="456"
+data-track-view="{&quot;mod&quot;:&quot;kp_popu_456-721&quot;,&quot;con&quot;:&quot;,,&quot;}"
+data-track-click="{&quot;mod&quot;:&quot;kp_popu_456-721&quot;,&quot;con&quot;:&quot;,,&quot;}"><a
+href="https://gitchat.csdn.net/column/5a7d1a13a7f22b3dffca7e49?utm_source=csdn100"
+              target="_blank">
+              <div class="blogkp3"><img
+                  src="http://img-ads.csdn.net/2018/201811091452349556.png"
+                  width="100" height="100">
+                <h6>Python 爬虫和数据分析实战</h6>
+                <span
+                  style="position:absolute;right:0;bottom:0;background:url(https://img-ads.csdn.net/2016/201608021757063065.png)
+                  no-repeat;width:33px;height:18px;display:block;z-index:
+                  9999;"></span></div>
+            </a></div>
+        </li>
+        <li>
+          <div id="kp_box_457" data-pid="457"
+data-track-view="{&quot;mod&quot;:&quot;kp_popu_457-681&quot;,&quot;con&quot;:&quot;,,&quot;}"
+data-track-click="{&quot;mod&quot;:&quot;kp_popu_457-681&quot;,&quot;con&quot;:&quot;,,&quot;}"><img
+              src="http://img-ads.csdn.net/2019/201901081453403307.jpg"
+              width="100" height="100"></div>
+        </li>
+        <li>
+          <div id="kp_box_458" data-pid="458"
+data-track-view="{&quot;mod&quot;:&quot;kp_popu_458-640&quot;,&quot;con&quot;:&quot;,,&quot;}"
+data-track-click="{&quot;mod&quot;:&quot;kp_popu_458-640&quot;,&quot;con&quot;:&quot;,,&quot;}"><a
+href="https://gitchat.csdn.net/column/5a7d1a13a7f22b3dffca7e49?utm_source=csdn100"
+              target="_blank">
+              <div class="blogkp3"><img
+                  src="http://img-ads.csdn.net/2018/201811091452349556.png"
+                  width="100" height="100">
+                <h6>Python 爬虫和数据分析实战</h6>
+                <span
+                  style="position:absolute;right:0;bottom:0;background:url(https://img-ads.csdn.net/2016/201608021757063065.png)
+                  no-repeat;width:33px;height:18px;display:block;z-index:
+                  9999;"></span></div>
+            </a></div>
+        </li>
+        <li>
+          <div id="kp_box_459" data-pid="459"
+data-track-view="{&quot;mod&quot;:&quot;kp_popu_459-686&quot;,&quot;con&quot;:&quot;,,&quot;}"
+data-track-click="{&quot;mod&quot;:&quot;kp_popu_459-686&quot;,&quot;con&quot;:&quot;,,&quot;}"><img
+              src="http://img-ads.csdn.net/2018/201811231428464985.jpg"
+              width="100" height="100"></div>
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+	$('.fourth_column_close').click(function(){
+		$('.fourth_column').remove();
+	})
+</script><!-- 右侧第四栏end -->
+    <!-- 高亮未与 markdown兼容  -->
+    <link rel="stylesheet"
+href="https://csdnimg.cn/release/blog_editor_html/release1.3.7/ckeditor/plugins/chart/chart.css">
+    <script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.7/ckeditor/plugins/chart/lib/chart.min.js"></script>
+    <script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.7/ckeditor/plugins/chart/widget2chart.js"></script>
+    <link rel="stylesheet"
+href="https://csdnimg.cn/release/blog_editor_html/release1.3.7/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-light.css">
+    <script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-98040b5dc6.js"></script>
+    <script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlighting();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+    <script src="https://g.csdnimg.cn/login-box/1.0.4/??login-box.js,login-auto.js?t=20190103145159"></script>
+    <script src="https://csdnimg.cn/release/phoenix/template/js/common-eb024b1a9c.min.js"></script>
+    <script src="https://csdnimg.cn/release/phoenix/template/js/detail-345cb7bcad.min.js"></script>
+    <script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-fc7383b956.min.js"></script>
+    <!-- <script type="text/javascript" src="//g.csdnimg.cn/check-adb/1.0.2/check-adb.js"></script> -->
+    <script type="text/javascript" src="https://csdnimg.cn/release/blog_mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+    <script type="text/javascript">
+            window.baidu_blueword ={
+            di:'24004469_oem_dg',
+            id:['content_views'],// 需要飘蓝区域：id要求以数组或，分隔的字符串形式传入
+            blueclass:['baidu_pl'],// 需要飘蓝区域：class要求以数组或，分隔的字符串形式传入, 传入值会覆盖默认值
+            user:'',
+            isMobile:false,
+            title: document.title,
+            page_url: location.href,
+            ignore:'baidu-blue-word-no',// 需要忽略掉的区域1
+            frequency:1,// 词频1
+            maxword:3// 最大接受飘词个数
+        }
+    </script>
+    <script src="https://gh.bdstatic.com/static/gh/js/sdk/bword.min.js"></script>
+  </body>
+  <!-- 右侧第四栏 -->
+</html>

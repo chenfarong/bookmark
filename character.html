@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>game_entry.html</title>
+  </head>
+  <body>
+    <br>
+    <br>
+    <h1>角色中心系统</h1>
+    <br>
+    <h2>1、命令集</h2>
+    <h2> </h2>
+    <table width="1662" height="159" cellspacing="0" cellpadding="0"
+      border="0">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#cccccc">功能名称<br>
+          </td>
+          <td valign="top" bgcolor="#cccccc">命令动词<br>
+          </td>
+          <td valign="top" bgcolor="#cccccc">命令样例<br>
+          </td>
+          <td valign="top" bgcolor="#cccccc">说明<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">创建一个角色</td>
+          <td valign="top">GX_ACTOR_NEW<br>
+          </td>
+          <td valign="top">{"cmd":"GX_ACTOR_NEW"}<br>
+          </td>
+          <td valign="top">参数：DSID，TOKEN，REALMD<br>
+            姓名【可选】<br>
+            性别【可选】<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">查看一个账号信息<br>
+          </td>
+          <td valign="top">GX_ACTOR_INFO<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">参数：角色ID，DSID，TOKEN<br>
+            获取角色详细信息<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">列举账号拥有的当前游戏区所有角色<br>
+          </td>
+          <td valign="top">GX_ACTOR_LIST<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">参数：角色ID，DSID，TOKEN<br>
+            在返回数组中，包含用来快速展示用的信息<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">删除指定角色<br>
+          </td>
+          <td valign="top">GX_ACTOR_FLAG<br>
+          </td>
+          <td valign="top">{"cmd":"GX_ACTOR_FLAG","flag":"delete","v":1}
+          </td>
+          <td valign="top">参数：角色ID，DSID，TOKEN<br>
+            这里并不是真正的删除，只是加上了标志<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">设置可更改的值<br>
+          </td>
+          <td valign="top">GX_ACTOR_SET<br>
+          </td>
+          <td valign="top">{"cmd":"GX_ACTOR_SET",[{"name":"xxx"}]} </td>
+          <td valign="top">例如：姓名等<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">丢弃指定角色<br>
+          </td>
+          <td valign="top">GX_ACTOR_FLAG<br>
+          </td>
+          <td valign="top">{"cmd":"GX_ACTOR_FLAG","flag":"drop","v":1}<br>
+          </td>
+          <td valign="top">参数：角色ID，DSID，TOKEN<br>
+            这将真正丢弃掉，（服务器加上了丢弃标志），可以通过GM重新获得<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">使用角色<br>
+          </td>
+          <td valign="top">GX_ACTOR_USE<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">参数：角色ID，DSID，TOKEN<br>
+            每个角色都有最后一次使用角色的时间戳，可以根据这个来确定默认使用哪个<br>
+            *游戏服务器自己处理<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <h2>2、概述</h2>
+    关于跨服（多个服务器）的设计，角色数据将集中在一个数据库上。<br>
+    关于滚服，一些游戏区将和另外一些游戏区进行合并，这时候涉及到数据迁移的问题。<br>
+    增加角色中心，角色中心记录角色创建，位置，迁移等基本情况。<br>
+    <br>
+    <h2>3、数据说明</h2>
+    <table width="1662" height="192" cellspacing="0" cellpadding="0"
+      border="0">
+      <tbody>
+        <tr>
+          <td valign="top"><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">{</span><br style="box-sizing: border-box; caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">"birth"</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">:</span><span class="json_number" style="box-sizing: border-box; color: rgb(37, 170, 226); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">1553174102</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">,</span><br style="box-sizing: border-box; caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">"cmd"</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">:</span><span class="json_string" style="box-sizing: border-box; color: rgb(58, 181, 74); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">"GX_DSID_INFO_R"</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">,</span><br style="box-sizing: border-box; caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">"dsid"</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">:</span><span class="json_string" style="box-sizing: border-box; color: rgb(58, 181, 74); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">"86_12E493AA-564C-4DBB-B45A-5AF7B5F618E7"</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">,</span><br style="box-sizing: border-box; caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold; font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">"actor"</span><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">:</span><span data-type="array" data-size="1" style="box-sizing: border-box; caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;">[<br style="box-sizing: border-box;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span data-type="object" style="box-sizing: border-box;">{<br style="box-sizing: border-box;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold;">"n"</span>:<span class="json_string" style="box-sizing: border-box; color: rgb(58, 181, 74); font-weight: bold;">"18601614600"</span>,<br style="box-sizing: border-box;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold;">"t"</span>:<span class="json_string" style="box-sizing: border-box; color: rgb(58, 181, 74); font-weight: bold;">"phone"</span>,<br style="box-sizing: border-box;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key" style="box-sizing: border-box; color: rgb(146, 39, 143); font-weight: bold;">"v"</span>:<span class="json_string" style="box-sizing: border-box; color: rgb(58, 181, 74); font-weight: bold;">"781525"</span><br style="box-sizing: border-box;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><br style="box-sizing: border-box;">&nbsp;&nbsp;&nbsp;&nbsp;]</span><br style="box-sizing: border-box; caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none;"><span style="caret-color: rgb(74, 85, 96); color: rgb(74, 85, 96); font-family: menlo, monospace, Tahoma, 微软雅黑, 幼圆; font-size: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-line; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration: none; display: inline !important; float: none;">}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    info 中的 t 是类型，保留的类型有：phone 手机，CN_ID 中华人民共和国身份证，user 用户名<br>
+    n 这个类型的值1，v这个类型的值2<br>
+    <br>
+    <br>
+    &nbsp;<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
