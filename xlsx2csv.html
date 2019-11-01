@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>xlsx2csv</title>
+  </head>
+  <body>
+    <br>
+    Sub ExcelToCsvMain()<br>
+    '检查工作薄中有多少个工作表<br>
+    &nbsp;&nbsp; Dim i, sheet_count, sheet_name As String<br>
+    &nbsp;&nbsp; sheet_count = Sheets.Count<br>
+    &nbsp;&nbsp; 'msgbox sheet_count<br>
+    &nbsp;&nbsp; For i = 1 To sheet_count<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sheet_name = Sheets(i).Name<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sheets(sheet_name).Select<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Call ExportSelectionToCSV<br>
+    &nbsp;&nbsp; Next<br>
+    &nbsp;&nbsp; Sheets(1).Select<br>
+    End Sub<br>
+    Function ExportSelectionToCSV()<br>
+    &nbsp;&nbsp; Dim wks As Worksheet<br>
+    &nbsp;&nbsp; Dim newWks As Worksheet<br>
+    &nbsp;&nbsp; Dim bookPath As String<br>
+    &nbsp;&nbsp; bookPath = ThisWorkbook.Path<br>
+    &nbsp;&nbsp; bookPath = bookPath +"\TEMP\"<br>
+    &nbsp;&nbsp; '判断文件目录是否存在<br>
+    &nbsp;&nbsp; If Dir(bookPath, 16) = Empty Then<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MkDir bookPath<br>
+    &nbsp;&nbsp; End If<br>
+    &nbsp; &nbsp;<br>
+    &nbsp;&nbsp; For Each wks In ActiveWindow.SelectedSheets<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wks.Copy 'to a new workbook<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set newWks = ActiveSheet<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With newWks<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Application.DisplayAlerts = False<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    .Parent.SaveAs Filename:=bookPath &amp; .Name, _<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    FileFormat:=xlCSV<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Application.DisplayAlerts = True<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    .Parent.Close savechanges:=False<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End With<br>
+    &nbsp;&nbsp; Next wks<br>
+    End Function<br>
+    <br>
+    --------------------- <br>
+    作者：KiwiInChina <br>
+    来源：CSDN <br>
+    原文：https://blog.csdn.net/clshangsha/article/details/84821901 <br>
+    版权声明：本文为博主原创文章，转载请附上博文链接！
+  </body>
+</html>

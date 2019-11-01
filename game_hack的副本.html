@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>CentOS7安装</title>
+  </head>
+  <body>
+    <br>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <p style="box-sizing: border-box; outline: 0px; margin: 0px 0px
+      16px; padding: 0px; font-family: verdana, Arial, Helvetica,
+      sans-serif; font-size: 14px; color: rgb(51, 51, 51); font-weight:
+      400; line-height: 25px; overflow-x: auto; overflow-wrap:
+      break-word; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;">设置时区同样, 在 CentOS 7 中, 引入了一个叫 timedatectl 的设置设置程序.</p>
+    <p style="box-sizing: border-box; outline: 0px; margin: 0px 0px
+      16px; padding: 0px; font-family: verdana, Arial, Helvetica,
+      sans-serif; font-size: 14px; color: rgb(51, 51, 51); font-weight:
+      400; line-height: 25px; overflow-x: auto; overflow-wrap:
+      break-word; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;">用法很简单:</p>
+    <p style="box-sizing: border-box; outline: 0px; margin: 0px 0px
+      16px; padding: 0px; font-family: verdana, Arial, Helvetica,
+      sans-serif; font-size: 14px; color: rgb(51, 51, 51); font-weight:
+      400; line-height: 25px; overflow-x: auto; overflow-wrap:
+      break-word; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;"># timedatectl # 查看系统时间方面的各种状态</p>
+    <div class="cnblogs_code" style="box-sizing: border-box; outline:
+      0px; margin: 0px; padding: 0px; overflow-wrap: break-word; color:
+      rgb(51, 51, 51); font-size: 14px; font-style: normal;
+      font-variant-ligatures: normal; font-variant-caps: normal;
+      font-weight: 400; letter-spacing: normal; orphans: 2; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width:
+      0px; background-color: rgb(255, 255, 255); text-decoration-style:
+      initial; text-decoration-color: initial; border: 1px solid
+      rgb(204, 204, 204); overflow: auto; font-family: &quot;Courier
+      New&quot; !important;">
+      <div class="cnblogs_code_toolbar" style="box-sizing: border-box;
+        outline: 0px; margin: 0px; padding: 0px; overflow-wrap:
+        break-word;"><span class="cnblogs_code_copy" style="box-sizing:
+          border-box; outline: 0px; margin: 0px; padding: 0px;
+          font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+          Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+          sans-serif; overflow-wrap: break-word; line-height: 1.8;"><a
+            title="复制代码" style="box-sizing: border-box; outline: 0px;
+            margin: 0px; padding: 0px; color: rgb(78, 161, 219);
+            text-decoration: none; cursor: pointer; font-family:
+            &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+            Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;
+            overflow-wrap: break-word; border: none !important;"><img
+              src="http://common.cnblogs.com/images/copycode.gif"
+              alt="复制代码" style="box-sizing: border-box; outline: rgb(7,
+              130, 193) solid 1px; margin: 1px; padding: 1px; max-width:
+              100%; border: none !important; overflow-wrap: break-word;
+              cursor: zoom-in;"></a></span></div>
+      <pre style="box-sizing: border-box; outline: 0px; margin: 0px 0px 24px; padding: 8px; position: relative; font-family: &quot;Courier New&quot; !important; white-space: pre-wrap; overflow-wrap: break-word; overflow-x: auto; font-size: 14px; line-height: 22px; color: rgb(0, 0, 0);">$timedatectl&nbsp;status<br style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; overflow-wrap: break-word;">Local time: 四 <span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">2014</span>-<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">12</span>-<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">25</span> <span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">10</span>:<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">52</span>:<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">10</span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8;"> CST
+Universal time: 四 </span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">2014</span>-<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">12</span>-<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">25</span> <span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">02</span>:<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">52</span>:<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">10</span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8;"> UTC
+RTC time: 四 </span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">2014</span>-<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">12</span>-<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">25</span> <span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">02</span>:<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">52</span>:<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">10</span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8;">
+Timezone: Asia</span>/Shanghai (CST, +<span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(128, 0, 128);">0800</span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8;">)
+NTP enabled: yes
+NTP synchronized: yes
+RTC </span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8; color: rgb(0, 0, 255);">in</span><span style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; line-height: 1.8;"> local TZ: no
+DST active: n</span>/a</pre>
+      <div class="cnblogs_code_toolbar" style="box-sizing: border-box;
+        outline: 0px; margin: 0px; padding: 0px; overflow-wrap:
+        break-word;"><span class="cnblogs_code_copy" style="box-sizing:
+          border-box; outline: 0px; margin: 0px; padding: 0px;
+          font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+          Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+          sans-serif; overflow-wrap: break-word; line-height: 1.8;"><a
+            title="复制代码" style="box-sizing: border-box; outline: 0px;
+            margin: 0px; padding: 0px; color: rgb(78, 161, 219);
+            text-decoration: none; cursor: pointer; font-family:
+            &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+            Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;
+            overflow-wrap: break-word; border: none !important;"><img
+              src="http://common.cnblogs.com/images/copycode.gif"
+              alt="复制代码" style="box-sizing: border-box; outline: rgb(7,
+              130, 193) solid 1px; margin: 1px; padding: 1px; max-width:
+              100%; border: none !important; overflow-wrap: break-word;
+              cursor: zoom-in;"></a></span></div>
+    </div>
+    <p style="box-sizing: border-box; outline: 0px; margin: 0px 0px
+      16px; padding: 0px; font-family: verdana, Arial, Helvetica,
+      sans-serif; font-size: 14px; color: rgb(51, 51, 51); font-weight:
+      400; line-height: 25px; overflow-x: auto; overflow-wrap:
+      break-word; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;"><span style="box-sizing: border-box; outline: 0px;
+        margin: 0px; padding: 0px; font-family: &quot;Microsoft
+        YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+        &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word;
+        line-height: 1.5;"># timedatectl list-timezones # 列出所有时区</span></p>
+    <p style="box-sizing: border-box; outline: 0px; margin: 0px 0px
+      16px; padding: 0px; font-family: verdana, Arial, Helvetica,
+      sans-serif; font-size: 14px; color: rgb(51, 51, 51); font-weight:
+      400; line-height: 25px; overflow-x: auto; overflow-wrap:
+      break-word; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;"># timedatectl set-local-rtc 1 # 将硬件时钟调整为与本地时钟一致, 0 为设置为
+      UTC 时间<br style="box-sizing: border-box; outline: 0px; margin:
+        0px; padding: 0px; overflow-wrap: break-word;">
+      # timedatectl set-timezone Asia/Shanghai # 设置系统时区为上海<br
+        style="box-sizing: border-box; outline: 0px; margin: 0px;
+        padding: 0px; overflow-wrap: break-word;">
+      其实不考虑各个发行版的差异化, 从更底层出发的话, 修改时间时区比想象中要简单:</p>
+    <p style="box-sizing: border-box; outline: 0px; margin: 0px 0px
+      16px; padding: 0px; font-family: verdana, Arial, Helvetica,
+      sans-serif; font-size: 14px; color: rgb(51, 51, 51); font-weight:
+      400; line-height: 25px; overflow-x: auto; overflow-wrap:
+      break-word; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;">#&nbsp;<span style="box-sizing: border-box; outline:
+        0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft
+        YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+        &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word;">cp
+
+        /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span></p>
+    <br>
+    <br>
+  </body>
+</html>

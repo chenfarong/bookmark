@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+  <head>
+    <title>IAP: GooglePlay</title>
+    <link rel="stylesheet" type="text/css" href="/css/base/template.css"
+      media="screen">
+    <link rel="stylesheet" type="text/css" href="/css/base/content.css"
+      media="screen">
+    <link rel="stylesheet" type="text/css"
+      href="/css/artemia/template.css" title="Artemia Nyos"
+      media="screen">
+    <link rel="stylesheet" type="text/css"
+      href="/css/artemia/content.css" title="Artemia Nyos"
+      media="screen">
+    <link rel="icon" href="/images/seamonkey16.png" type="image/png">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <link rel="top" href="../" title="SeaMonkey Project">
+    <link rel="up" href="../" title="Home">
+    <script type="text/javascript" src="/download.js"></script>
+  </head>
+  <body id="seamonkeyproject-org">
+    <br>
+    https://blog.csdn.net/a351945755/article/details/25691343<br>
+    <br>
+    <br>
+    https://blog.csdn.net/lemonzone2010/article/details/44983659<br>
+    <meta charset="utf-8">
+    <a
+      href="https://blog.csdn.net/wang1472jian1110/article/details/88538459">https://blog.csdn.net/wang1472jian1110/article/details/88538459</a><br>
+    <br>
+https://github.com/googleapis/google-api-php-client/tree/master/examples<br>
+    <br>
+    <meta charset="utf-8">
+    <ol class="hljs-ln" style="box-sizing: border-box; outline: 0px;
+      margin: 0px; padding: 0px; list-style: none; font-family:
+      &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto,
+      Noto, Arial, &quot;PingFang SC&quot;, sans-serif; border-collapse:
+      collapse; font-size: 16px; overflow: hidden; overflow-wrap:
+      break-word; color: rgb(56, 58, 66); font-style: normal;
+      font-variant-ligatures: normal; font-variant-caps: normal;
+      font-weight: 400; letter-spacing: normal; orphans: 2; text-align:
+      left; text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      text-decoration-style: initial; text-decoration-color: initial;
+      width: 927px;">
+      <li style="box-sizing: border-box; outline: 0px; margin: 0px;
+        padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF
+        Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+        sans-serif; list-style-type: none; overflow-wrap: break-word;
+        height: 22px;">
+        <div class="hljs-ln-code" style="box-sizing: border-box;
+          outline: 0px; margin: 0px 0px 0px 8px; padding: 0px;
+          overflow-wrap: break-word; font-family: &quot;Source Code
+          Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+          Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+          Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
+          monospace, &quot;PingFang SC&quot;, &quot;Microsoft
+          YaHei&quot;, sans-serif; font-size: 14px; float: left; height:
+          22px;">
+          <div class="hljs-ln-line" style="box-sizing: border-box;
+            outline: 0px; margin: 0px; padding: 0px; overflow-wrap:
+            break-word; font-family: &quot;Source Code Pro&quot;,
+            &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+            &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+            Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+            &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+            sans-serif; font-size: 14px;"><span class="line"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; font-family: &quot;Source Code Pro&quot;,
+              &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+              &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+              Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+              &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+              sans-serif; overflow-wrap: break-word; font-size: 14px;"><span
+                class="nv" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(38, 139, 210) !important;">$inapp_purchase_data</span><span>&nbsp;</span><span
+                class="o" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(88, 110, 117) !important; font-weight: bold
+                !important;">=</span><span>&nbsp;</span><span class="s1"
+                style="box-sizing: border-box; outline: 0px; margin:
+                0px; padding: 0px; font-family: &quot;Source Code
+                Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+                Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                Courier, monospace, &quot;PingFang SC&quot;,
+                &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap:
+                break-word; font-size: 14px; color: rgb(42, 161, 152)
+                !important;"><span class="hljs-string"
+                  style="box-sizing: border-box; outline: 0px; margin:
+                  0px; padding: 0px; font-family: &quot;Source Code
+                  Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                  Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid
+                  Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                  Courier, monospace, &quot;PingFang SC&quot;,
+                  &quot;Microsoft YaHei&quot;, sans-serif; color:
+                  rgb(80, 161, 79); overflow-wrap: break-word;
+                  font-size: 14px;">'客户端回传的 INAPP_PURCHASE_DATA 对应的数据'</span></span><span
+                class="p" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(88, 110, 117) !important;">;</span></span></div>
+        </div>
+      </li>
+      <li style="box-sizing: border-box; outline: 0px; margin: 0px;
+        padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF
+        Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+        sans-serif; list-style-type: none; overflow-wrap: break-word;
+        height: 22px;">
+        <div class="hljs-ln-code" style="box-sizing: border-box;
+          outline: 0px; margin: 0px 0px 0px 8px; padding: 0px;
+          overflow-wrap: break-word; font-family: &quot;Source Code
+          Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+          Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+          Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
+          monospace, &quot;PingFang SC&quot;, &quot;Microsoft
+          YaHei&quot;, sans-serif; font-size: 14px; float: left; height:
+          22px;">
+          <div class="hljs-ln-line" style="box-sizing: border-box;
+            outline: 0px; margin: 0px; padding: 0px; overflow-wrap:
+            break-word; font-family: &quot;Source Code Pro&quot;,
+            &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+            &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+            Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+            &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+            sans-serif; font-size: 14px;"><span class="line"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; font-family: &quot;Source Code Pro&quot;,
+              &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+              &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+              Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+              &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+              sans-serif; overflow-wrap: break-word; font-size: 14px;"><span
+                class="nv" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(38, 139, 210) !important;">$inapp_data_signature</span><span>&nbsp;</span><span
+                class="o" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(88, 110, 117) !important; font-weight: bold
+                !important;">=</span><span>&nbsp;</span><span class="s1"
+                style="box-sizing: border-box; outline: 0px; margin:
+                0px; padding: 0px; font-family: &quot;Source Code
+                Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+                Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                Courier, monospace, &quot;PingFang SC&quot;,
+                &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap:
+                break-word; font-size: 14px; color: rgb(42, 161, 152)
+                !important;"><span class="hljs-string"
+                  style="box-sizing: border-box; outline: 0px; margin:
+                  0px; padding: 0px; font-family: &quot;Source Code
+                  Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                  Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid
+                  Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                  Courier, monospace, &quot;PingFang SC&quot;,
+                  &quot;Microsoft YaHei&quot;, sans-serif; color:
+                  rgb(80, 161, 79); overflow-wrap: break-word;
+                  font-size: 14px;">'客户端回传的 INAPP_DATA_SIGNATURE 对应的数据'</span></span><span
+                class="p" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(88, 110, 117) !important;">;</span></span></div>
+        </div>
+      </li>
+      <li style="box-sizing: border-box; outline: 0px; margin: 0px;
+        padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF
+        Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+        sans-serif; list-style-type: none; overflow-wrap: break-word;
+        height: 22px;">
+        <div class="hljs-ln-code" style="box-sizing: border-box;
+          outline: 0px; margin: 0px 0px 0px 8px; padding: 0px;
+          overflow-wrap: break-word; font-family: &quot;Source Code
+          Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+          Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+          Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
+          monospace, &quot;PingFang SC&quot;, &quot;Microsoft
+          YaHei&quot;, sans-serif; font-size: 14px; float: left; height:
+          22px;">
+          <div class="hljs-ln-line" style="box-sizing: border-box;
+            outline: 0px; margin: 0px; padding: 0px; overflow-wrap:
+            break-word; font-family: &quot;Source Code Pro&quot;,
+            &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+            &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+            Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+            &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+            sans-serif; font-size: 14px;"><span class="line"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; font-family: &quot;Source Code Pro&quot;,
+              &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+              &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+              Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+              &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+              sans-serif; overflow-wrap: break-word; font-size: 14px;"><span
+                class="nv" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(38, 139, 210) !important;">$google_public_key</span><span>&nbsp;</span><span
+                class="o" style="box-sizing: border-box; outline: 0px;
+                margin: 0px; padding: 0px; font-family: &quot;Source
+                Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+                &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+                &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+                Inconsolata, Courier, monospace, &quot;PingFang
+                SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+                overflow-wrap: break-word; font-size: 14px; color:
+                rgb(88, 110, 117) !important; font-weight: bold
+                !important;">=</span><span>&nbsp;</span><span class="s1"
+                style="box-sizing: border-box; outline: 0px; margin:
+                0px; padding: 0px; font-family: &quot;Source Code
+                Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+                Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                Courier, monospace, &quot;PingFang SC&quot;,
+                &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap:
+                break-word; font-size: 14px; color: rgb(42, 161, 152)
+                !important;"><span class="hljs-string"
+                  style="box-sizing: border-box; outline: 0px; margin:
+                  0px; padding: 0px; font-family: &quot;Source Code
+                  Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                  Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid
+                  Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                  Courier, monospace, &quot;PingFang SC&quot;,
+                  &quot;Microsoft YaHei&quot;, sans-serif; color:
+                  rgb(80, 161, 79); overflow-wrap: break-word;
+                  font-size: 14px;">'Google Play Developer Console
+                  中此应用的许可密钥'</span></span><span class="p"
+                style="box-sizing: border-box; outline: 0px; margin:
+                0px; padding: 0px; font-family: &quot;Source Code
+                Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
+                Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
+                Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
+                Courier, monospace, &quot;PingFang SC&quot;,
+                &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap:
+                break-word; font-size: 14px; color: rgb(88, 110, 117)
+                !important;">;</span></span></div>
+        </div>
+      </li>
+    </ol>
+    <br>
+    <br>
+    {<br>
+    &nbsp; "kind": "androidpublisher#productPurchase",<br>
+    &nbsp; "purchaseTimeMillis": long,<br>
+    &nbsp; "purchaseState": integer,<br>
+    &nbsp; "consumptionState": integer,<br>
+    &nbsp; "developerPayload": string,<br>
+    &nbsp; "orderId": string,<br>
+    &nbsp; "purchaseType": integer,<br>
+    &nbsp; "acknowledgementState": integer<br>
+    }<br>
+    <br>
+    function GooglePlayCheck(params, inappDataSignature) { let verify =
+    crypto.createVerify('RSA-SHA1');//请注意，这里要用RSA-SHA1 let PHP_EOL =
+    '\n';//实际上就是换行符 let inappPurchaseData = JSON.stringify(params);
+    //这里要将公钥转换成64个字符一行的文本块。 let publicKey = "-----BEGIN PUBLIC KEY-----"
+    + PHP_EOL + chunk_split(googlePublicKey, 64, PHP_EOL) + "-----END
+    PUBLIC KEY-----"; verify.update(inappPurchaseData);// let isSuccess
+    = verify.verify(publicKey, Buffer.from(inappDataSignature,
+    'base64')); //验证数据 console.log("result:", isSuccess); }<br>
+    <br>
+    <br>
+    <br>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <ol class="linenums"
+      style="list-style-position:outside;border:none;">
+      <li class="L0"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">$signture_data </span><span
+          class="pun" style="color:rgb(0,0,0);">=</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="str" style="color:#800000;">'{"nonce":2923936465474897294,"orders":[{"notificationId":"android.test.purchased","orderId":"transactionId.android.test.purchased","packageName":"com.kunlun.fysg.test","productId":"android.test.purchased","purchaseTime":1346916115611,"purchaseState":0}]}'</span><span
+          class="pun" style="color:rgb(0,0,0);">;</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L1"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span> <br>
+      </li>
+      <li class="L2"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">$signture </span><span
+          class="pun" style="color:rgb(0,0,0);">=</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="str" style="color:#800000;">''</span><span class="pun"
+          style="color:rgb(0,0,0);">;</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L3"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span> <br>
+      </li>
+      <li class="L4"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="com"
+          style="color:#808080;">//google app 提供的public key</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L5"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">$public_key </span><span
+          class="pun" style="color:rgb(0,0,0);">=</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="str" style="color:#800000;">""</span><span class="pun"
+          style="color:rgb(0,0,0);">;</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L6"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span> <br>
+      </li>
+      <li class="L7"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">$public_key </span><span
+          class="pun" style="color:rgb(0,0,0);">=</span><span
+          class="pln" style="color:rgb(0,0,0);"> chunk_split</span><span
+          class="pun" style="color:rgb(0,0,0);">(</span><span
+          class="pln" style="color:rgb(0,0,0);">$public_key</span><span
+          class="pun" style="color:rgb(0,0,0);">,</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="lit" style="color:#800000;">64</span><span class="pun"
+          style="color:rgb(0,0,0);">,</span><span class="pln"
+          style="color:rgb(0,0,0);"> </span><span class="str"
+          style="color:#800000;">"\n"</span><span class="pun"
+          style="color:rgb(0,0,0);">)</span><span class="pln"
+          style="color:rgb(0,0,0);"> </span><span class="pun"
+          style="color:rgb(0,0,0);">.</span><span class="pln"
+          style="color:rgb(0,0,0);"> &nbsp;</span><span class="str"
+          style="color:#800000;">"-----END PUBLIC KEY-----"</span><span
+          class="pun" style="color:rgb(0,0,0);">;</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L8"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span> <br>
+      </li>
+      <li class="L9"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">$public_key_handle </span><span
+          class="pun" style="color:rgb(0,0,0);">=</span><span
+          class="pln" style="color:rgb(0,0,0);"> openssl_get_publickey</span><span
+          class="pun" style="color:rgb(0,0,0);">(</span><span
+          class="pln" style="color:rgb(0,0,0);">$public_key</span><span
+          class="pun" style="color:rgb(0,0,0);">);</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L0"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">$result </span><span
+          class="pun" style="color:rgb(0,0,0);">=</span><span
+          class="pln" style="color:rgb(0,0,0);"> openssl_verify</span><span
+          class="pun" style="color:rgb(0,0,0);">(</span><span
+          class="pln" style="color:rgb(0,0,0);">$signture_data</span><span
+          class="pun" style="color:rgb(0,0,0);">,</span><span
+          class="pln" style="color:rgb(0,0,0);"> base64_decode</span><span
+          class="pun" style="color:rgb(0,0,0);">(</span><span
+          class="pln" style="color:rgb(0,0,0);">$signture</span><span
+          class="pun" style="color:rgb(0,0,0);">),</span><span
+          class="pln" style="color:rgb(0,0,0);"> $public_key_handle</span><span
+          class="pun" style="color:rgb(0,0,0);">,</span><span
+          class="pln" style="color:rgb(0,0,0);"> OPENSSL_ALGO_SHA1</span><span
+          class="pun" style="color:rgb(0,0,0);">);</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L1"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="kwd"
+          style="color:rgb(0,0,139);font-weight:bold;">if</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="pun" style="color:rgb(0,0,0);">(</span><span
+          class="pln" style="color:rgb(0,0,0);">$result </span><span
+          class="pun" style="color:rgb(0,0,0);">==</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="lit" style="color:#800000;">1</span><span class="pun"
+          style="color:rgb(0,0,0);">)</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L2"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="pun"
+          style="color:rgb(0,0,0);">{</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L3"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">&nbsp; &nbsp; echo </span><span
+          class="str" style="color:#800000;">"good"</span><span
+          class="pun" style="color:rgb(0,0,0);">;</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L4"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="pun"
+          style="color:rgb(0,0,0);">}</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L5"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">elseif </span><span
+          class="pun" style="color:rgb(0,0,0);">(</span><span
+          class="pln" style="color:rgb(0,0,0);">$ok </span><span
+          class="pun" style="color:rgb(0,0,0);">==</span><span
+          class="pln" style="color:rgb(0,0,0);"> </span><span
+          class="lit" style="color:#800000;">0</span><span class="pun"
+          style="color:rgb(0,0,0);">)</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L6"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="pun"
+          style="color:rgb(0,0,0);">{</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L7"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">&nbsp; &nbsp; echo </span><span
+          class="str" style="color:#800000;">"bad"</span><span
+          class="pun" style="color:rgb(0,0,0);">;</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L8"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="pun"
+          style="color:rgb(0,0,0);">}</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L9"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="kwd"
+          style="color:rgb(0,0,139);font-weight:bold;">else</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L0"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="pun"
+          style="color:rgb(0,0,0);">{</span><span class="pln"
+          style="color:rgb(0,0,0);"></span> </li>
+      <li class="L1"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);">&nbsp; &nbsp; echo </span><span
+          class="str" style="color:#800000;">"ugly, error checking
+          signature"</span><span class="pun" style="color:rgb(0,0,0);">;</span><span
+          class="pln" style="color:rgb(0,0,0);"></span> </li>
+      <li class="L2"
+style="list-style:decimal;border:none;line-height:20.399999618530273px;color:rgb(153,153,153);"><span
+          class="pln" style="color:rgb(0,0,0);"></span><span class="pun"
+          style="color:rgb(0,0,0);">}</span></li>
+    </ol>
+    <br>
+    <br>
+    <br>
+    $path_parts = pathinfo(__FILE__);<br>
+    $dir_name = $path_parts['dirname'];<br>
+    $oauth_file = $dir_name."/GooglePlayAndroidDeveloper-xxxxxx.json";<br>
+    &nbsp;<br>
+    $google_client = new \Google_Client();<br>
+    $google_client-&gt;setApplicationName($package_name);<br>
+    $google_client-&gt;setClientId(GOOGLE_CLIENT_ID);<br>
+$google_client-&gt;setScopes(array('https://www.googleapis.com/auth/androidpublisher'));<br>
+    $google_client-&gt;setAuthConfig($oauth_file);<br>
+    $androidPublishService = new
+    \Google_Service_AndroidPublisher($google_client);<br>
+    $result =
+    $androidPublishService-&gt;purchases_subscriptions-&gt;get(<br>
+    &nbsp;&nbsp;&nbsp; $package_name,<br>
+    &nbsp;&nbsp;&nbsp; $product_id,<br>
+    &nbsp;&nbsp;&nbsp; $purchase_token<br>
+    );<br>
+    Log::info($result);<br>
+    --------------------- <br>
+    作者：robotai_xman <br>
+    来源：CSDN <br>
+    原文：https://blog.csdn.net/ITzaibadong/article/details/83056731 <br>
+    版权声明：本文为博主原创文章，转载请附上博文链接！<br>
+    <br>
+    <br>
+    {<br>
+    &nbsp; "kind": "androidpublisher#subscriptionPurchase",<br>
+    &nbsp; "startTimeMillis": long,<br>
+    &nbsp; "expiryTimeMillis": long,<br>
+    &nbsp; "autoResumeTimeMillis": long,<br>
+    &nbsp; "autoRenewing": boolean,<br>
+    &nbsp; "priceCurrencyCode": string,<br>
+    &nbsp; "priceAmountMicros": long,<br>
+    &nbsp; "countryCode": string,<br>
+    &nbsp; "developerPayload": string,<br>
+    &nbsp; "paymentState": integer,<br>
+    &nbsp; "cancelReason": integer,<br>
+    &nbsp; "userCancellationTimeMillis": long,<br>
+    &nbsp; "cancelSurveyResult": {<br>
+    &nbsp;&nbsp;&nbsp; "cancelSurveyReason": integer,<br>
+    &nbsp;&nbsp;&nbsp; "userInputCancelReason": string<br>
+    &nbsp; },<br>
+    &nbsp; "orderId": string,<br>
+    &nbsp; "linkedPurchaseToken": string,<br>
+    &nbsp; "purchaseType": integer,<br>
+    &nbsp; "priceChange": {<br>
+    &nbsp;&nbsp;&nbsp; "newPrice": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "priceMicros": string,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "currency": string<br>
+    &nbsp;&nbsp;&nbsp; },<br>
+    &nbsp;&nbsp;&nbsp; "state": integer<br>
+    &nbsp; },<br>
+    &nbsp; "profileName": string,<br>
+    &nbsp; "emailAddress": string,<br>
+    &nbsp; "givenName": string,<br>
+    &nbsp; "familyName": string,<br>
+    &nbsp; "profileId": string<br>
+    }<br>
+    <br>
+    paymentState &nbsp;&nbsp;&nbsp; integer &nbsp;&nbsp;&nbsp; The
+    payment state of the subscription. Possible values are:<br>
+    <br>
+    &nbsp;0 &nbsp; Payment pending<br>
+    &nbsp;1 &nbsp; Payment received<br>
+    &nbsp;2 &nbsp; Free trial<br>
+    &nbsp;3 &nbsp; Pending deferred upgrade/downgrade<br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

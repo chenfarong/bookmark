@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>game_entry.html</title>
+  </head>
+  <body>
+    <br>
+    <h1> 游戏服务器引擎</h1>
+    <br>
+    <h2>开发环境安装</h2>
+    mongoDB数据库3.4或者以上版本<br>
+    <br>
+    <h3>目录结构</h3>
+    bin 执行文件&nbsp; <br>
+    res 策划的资源文件<br>
+    plugin 动态插件<br>
+    <br>
+    bin/default.json 默认配置文件<br>
+    注意添加删除插件需要修改配置信息<br>
+    <br>
+    <h2>Windows x86_64 平台</h2>
+    visual studio 2017 c++<br>
+    <br>
+    <h2>Centos7 x86_64 平台</h2>
+    make<br>
+    gcc<br>
+    gcc-c++
+    <h3>&nbsp;<br>
+    </h3>
+    <h2>创建自己的插件</h2>
+    <br>
+    <h3>基础 <br>
+    </h3>
+    main&nbsp; 是提供给引擎使用的几个接口调用<br>
+    plugin 是注册网络请求，其他插件请求命令处理函数；配置表装载，处理的位置。<br>
+    <br>
+    <br>
+    <h3>事件 event<br>
+    </h3>
+    玩家进入/退出，上线/下线<br>
+    <br>
+    <h3>定时器 onTimer<br>
+    </h3>
+    监听游戏对象的所有定时器<br>
+    <br>
+    <h3>网络请求 opc<br>
+    </h3>
+    <p>客户通过网络发过来的请求，在这里编写处理逻辑并返回数据给客户端。<br>
+      <font color="#ff0000">多个插件都注册了相同的客户端请求命令，多个插件都各自处理，注意不同插件之间的处理顺序。</font><br>
+    </p>
+    <h3>其他插件请求 xipc<br>
+    </h3>
+    <br>
+    <h3>游戏规则</h3>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

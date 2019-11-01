@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0, maximum-scale=2">
+    <title>centos7 安装nginx和php7-腾讯云资讯</title>
+    <meta name="keywords" content="互联网,仓库,影响">
+    <meta name="description" content="centos7
+      安装nginx和php7centos7系统安装php7会出现一些奇奇怪怪的问题，耽误时间，影响效率，这里推荐直接yum安装1、在">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet"
+href="//imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/portal/css/global-201904221930.css?max_age=31536000">
+    <link rel="stylesheet"
+href="//imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/portal/css/global-components.css?max_age=31536000&amp;t=20180817">
+    <link rel="stylesheet" type="text/css"
+href="//imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/portal/css/responsive-navigation-footer.css">
+    <link rel="stylesheet" type="text/css"
+href="//imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/information/css/info.css">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a6ff8e029768114a7a4224a3dfa058fd";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    <script>
+    	
+	</script>
+    <style>
+		.siderbar-top-ad {
+			height: 280px;
+			width: 330px;
+			margin-bottom: 20px;
+		}
+
+		.siderbar-bottom-ad {
+			height: 149px;
+			width: 330px;
+			margin-bottom: 28px;
+		}
+
+		.siderbar-top-ad img, .siderbar-bottom-ad img {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+  </head>
+  <body>
+    <div class="c-nav c-nav-hover info-nav">
+      <div class="c-nav-inner">
+        <!--logo start--></div>
+    </div>
+    <br>
+    <div class="c-section detail-section" style="padding-bottom: 10px">
+      <div class="c-section-inner">
+        <!-- 内容块 -->
+        <div class="c-section-bd">
+          <div class="info-main">
+            <div class="c-grid c-grid-expand info-main-inner">
+              <div class="c-g-17 s-24">
+                <div class="info-main-content">
+                  <div class="detail-inner">
+                    <div class="detail-hd">
+                      <h1 class="info-article-title">centos7
+                        安装nginx和php7</h1>
+                      <div class="info-article-tags"> <span
+                          class="info-article-tags-item"> <span
+                            class="info-article-author"> <span
+                              class="info-article-author-figure"
+                              style="display: none;"><img
+src="//mc.qcloudimg.com/static/img/5c9ff044b87633a8298390e2583cde06/avatar.png"></span>
+                            <span class="info-article-author-name">作
+                              者：stevenhuhu</span> </span> </span> <span
+                          class="info-article-tags-item"> <i
+                            class="info-icon-clock"></i>2018-04-20 </span>
+                        <span class="info-article-tags-item"> 来源：51CTO </span>
+                      </div>
+                    </div>
+                    <div class="c-footer-inner">
+                      <div class="detail-content">
+                        <p><span>centos7 安装nginx和php7</span></p>
+                        <p><span><span>centos7系统安装php7会出现一些奇奇怪怪的问题，耽误时间，
+                              影响效率，这里推荐直接yum安装</span><br>
+                          </span></p>
+                        <p><span><span><br>
+                            </span></span></p>
+                        <p><span><span>1、在开始安装 Nginx 和 php7-fpm
+                              之前，我们还学要先添加 EPEL 包的仓库源。使用如下命令：</span></span></p>
+                        <p><span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p>
+                        <ol>
+                          <li>
+                            <p><code><span>yum</span><span> </span><span>-</span><span>y
+                                  install epel</span><span>-</span><span>release</span></code></p>
+                          </li>
+                        </ol>
+                        <p><span><span></span></span><br>
+                        </p>
+                        <p><span>然后我们还需要为 php7-fpm
+                            添加另外一个仓库。互联网中有很个远程仓库提供了 PHP 7 系列包，我在这里使用的是
+                            webtatic。</span></p>
+                        <p>添加 PHP7-FPM webtatic 仓库：</p>
+                        <ol>
+                          <li>
+                            <p><code><span>rpm </span><span>-</span><span>Uvh</span><span>
+                                  https</span><span>:</span><span>//mirror.webtatic.com/yum/el7/webtatic-release.rpm</span></code></p>
+                          </li>
+                        </ol>
+                        <p>然后就是安装 PHP7-FPM 以及 Nextcloud 需要的一些包。</p>
+                        <pre>yum&nbsp;-y&nbsp;install&nbsp;php70w-fpm&nbsp;php70w-cli&nbsp;php70w-gd&nbsp;php70w-mcrypt&nbsp;php70w-mysql&nbsp;php70w-pear&nbsp;php70w-xml&nbsp;php70w-mbstring&nbsp;php70w-pdo&nbsp;php70w-json&nbsp;php70w-pecl-apcu&nbsp;php70w-pecl-apcu-devel</pre>
+                        <p>最后，从服务器终端里查看 PHP 的版本号，以便验证 PHP 是否正确安装。</p>
+                        <pre>php&nbsp;-v</pre>
+                        <p><br>
+                        </p>
+                        <p><br>
+                        </p>
+                        <p><span>2、配置php7-fpm</span><br>
+                        </p>
+                        <p>在这一个步骤中，我们将配置 php-fpm 与 Nginx 协同运行。Php7-fpm
+                          将使用&nbsp;<code>nginx</code>&nbsp;用户来运行，并监
+                          听&nbsp;<code>9000</code>&nbsp;端口。</p>
+                        <p>使用 vim 编辑默认的 php7-fpm 配置文件。</p>
+                        <pre>vim&nbsp;/etc/php-fpm.d/www.conf</pre>
+                        <p>在第 8 行和第 10行，<code>user</code>&nbsp;和&nbsp;<code>group</code>&nbsp;
+                          赋值为&nbsp;<code>nginx</code>。</p>
+                        <pre>user&nbsp;=&nbsp;nginxgroup&nbsp;=&nbsp;nginx</pre>
+                        <p>在第 22 行，确保 php-fpm 运行在指定端口。</p>
+                        <pre>listen&nbsp;=&nbsp;127.0.0.1:9000</pre>
+                        <p>取消第 366-370 行的注释，启用 php-fpm 的系统环境变量。</p>
+                        <pre>env[HOSTNAME]&nbsp;=&nbsp;$HOSTNAMEenv[PATH]&nbsp;=&nbsp;/usr/local/bin:/usr/bin:/binenv[TMP]&nbsp;=&nbsp;/tmpenv[TMPDIR]&nbsp;=&nbsp;/tmpenv[TEMP]&nbsp;=&nbsp;/tmp</pre>
+                        <p>保存文件并退出 vim 编辑器。</p>
+                        <p>下一步，就是在&nbsp;<code>/var/lib/</code>&nbsp;目录下创
+                          建一个新的文件夹&nbsp;<code>session</code>，并将其拥有者变更
+                          为&nbsp;<code>nginx</code>&nbsp;用户。</p>
+                        <pre>mkdir&nbsp;-p&nbsp;/var/lib/php/sessionchown&nbsp;nginx:nginx&nbsp;-R&nbsp;/var/lib/php/session/</pre>
+                        <p>然后启动 php-fpm 和 Nginx，并且将它们设置为随开机启动的服务。</p>
+                        <pre>systemctl&nbsp;start&nbsp;php-fpm
+systemctl&nbsp;start&nbsp;nginx&nbsp;
+systemctl&nbsp;enable&nbsp;php-fpm
+systemctl&nbsp;enable&nbsp;nginx</pre>
+                        <p><br>
+                        </p>
+                      </div>
+                      <div class="info-article-label">本文原作者stevenhuhu，原文
+                        链接http://blog.51cto.com/749806593/1933573</div>
+                      <br>
+                      <div class="c-footer-blogroll-extra">
+                        <div class="c-footer-select J-qcRegionSelector">
+                          <div class="c-footer-dropdown
+                            J-qcFooterRegionList">
+                            <ul class="c-footer-dropdown-menu">
+                              <li class="actived"><a href="javascript:;"
+                                  class="J-qcRegionOption
+                                  J-qcFooterSwitcher"
+                                  data-region="cn_zh"
+                                  hotrep="hp.footer.region.cn">中国站</a></li>
+                              <li><a
+                                  href="https://intl.cloud.tencent.com"
+                                  class="J-qcRegionOption
+                                  J-qcFooterSwitcher" data-region="intl"
+                                  hotrep="hp.footer.region.intl">International</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="qc-footer c-footer c-footer-short J-qc-footer"
+      data-type="cn_zh">
+      <div class="c-footer-blogroll"> </div>
+    </div>
+    <script>!function(e){function t(a){if(r[a])return r[a].exports;var n=r[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var r={};return t.m=e,t.c=r,t.p="//imgcache.qq.com/qcloud/main/scripts/",t(0)}([function(e,t,r){r(1)},function(e,t,r){(function(e){function t(e){return e=String(e).replace(/([.*+?^=!:${}()|[\]\/\\])/g,"\\$1"),location.search.slice(1).match(RegExp("(?:^|&)"+e+"(?:=([^&#]*)?|[&#]|$)"))?String(RegExp.$1||"").replace(/\+/g," "):void 0}var r=e.localStorage,a="qcmain/js//".replace(/\/+$/,"/"),n=/^(.+)\.(\w{12,})\.js$/,i=720,c={get:function(e){var t=r.getItem(a+e);try{return JSON.parse(t||"false")}catch(e){return!1}},has:function(e){var t=String(e).match(n);return!!t&&this.get(t[1]).hash===t[2]},set:function(e,t,c){var o=String(e).match(n);if(o){var s=+new Date,u=a+o[1];c||(c={});var l={hash:o[2],stamp:s,expire:s+60*(c.expire||i)*60*1e3,data:t};r.setItem(u,JSON.stringify(l))}return this},remove:function(e){return r.removeItem(a+e),this},clear:function(e){var t=+new Date;for(var n in r){var i=n.split(a)[1];i&&(!e||this.get(i).expire<=t)&&this.remove(i)}return this}};if("localStorage"in e&&"JSON"in e&&void 0===t("!debug"))try{var o="whatever";localStorage.setItem(o,o),localStorage.removeItem(o),e.QCMAIN_STORE=c.clear(!0)}catch(e){}}).call(t,function(){return this}())}]);</script>
+    <script>
+try {
+	for(var key in localStorage) {
+		if (localStorage.hasOwnProperty(key) && !!~key.indexOf('qcact/js')) {
+			localStorage.removeItem(key)
+		}
+	}
+} catch (e) {}
+</script>
+    <script src="https://cloud.tencent.com/qccomponent/login/api.js"></script>
+    <script src="//imgcache.qq.com/qcloud/act/scripts/release/common/base.7eb6e82002b45235060b.js?max_age=31536000" crossorigin="anonymous"></script>
+    <script src="//imgcache.qq.com/qcloud/main/scripts/release/common/deps.b5ed03e0263c338654a5.js?max_age=31536000"></script>
+    <script src="//imgcache.qq.com/operation/dianshi/script/raven.min.ded8781998f88881547d1fff59b449244e3b7168.js" crossorigin="anonymous"></script>
+    <script>
+	window.SENTRY_CONFIG = 	{
+		dsn: 'https://7128d8c9b8224fbb892dfc7ce5e555a3@report.url.cn/sentry/27',
+		whitelistUrls: [
+			/imgcache\.qq\.com\/qcloud\/act\/scripts\/release\//,
+			/imgcache\.qq\.com\/qcloud\/opc-sdk\/speedMonitor/
+		]
+	}
+</script>
+    <script type="text/javascript" src="https://imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/event/pc/cooperate/js/iscroll.js?max_age=31536000"></script>
+  </body>
+</html>

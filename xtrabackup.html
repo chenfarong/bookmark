@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>game_entry.html</title>
+  </head>
+  <body>
+    <br>
+    <meta charset="utf-8">
+    <a href="https://github.com/percona/percona-xtrabackup">https://github.com/percona/percona-xtrabackup</a><br>
+    <br>
+    <br>
+    生产环境使用最新版本的xtrabackup版本，鉴于xtrabackup
+    8.0版本移除命令，推荐使用xtrabackup命令进行备份和还原。<br>
+    --------<br>
+    --安装<br>
+    --------<br>
+    在percona官方下载centos版本的rpm包，使用yum安装（示例）：<br>
+    yum -y localinstall
+    percona-xtrabackup-80-8.0.1-2.alpha2.el7.x86_64.rpm<br>
+    sudo yum install
+https://repo.percona.com/centos/7/RPMS/noarch/percona-release-0.1-8.noarch.rpm<br>
+    &nbsp;<br>
+    &nbsp;sudo percona-release enable tools testing<br>
+    yum install percona-xtrabackup<br>
+    ----------<br>
+    --全量备份：<br>
+    ---------<br>
+    1.全量备份<br>
+    &nbsp;xtrabackup --defaults-file=/etc/my.cnf --host=172.16.1.52
+    --user=root --password=xxxyyy --port=3310 --backup
+    --target-dir=/data/backup/<br>
+    &nbsp;或者：使用参数--datadir替换掉参数--defaults-file.<br>
+    &nbsp;# xtrabackup --host=172.16.1.52 --user=root --password=xxxyyy
+    --port=3310 --datadir=/data/crm/ --backup --target-dir=/data/backup/<br>
+    &nbsp;<br>
+    2.数据恢复：<br>
+    2.1停止掉运行的数据库实例：<br>
+    &nbsp;# /etc/init.d/mysqld_multi stop 3310<br>
+    2.2 准备：<br>
+    &nbsp; xtrabackup --host=172.16.1.52 --user=root --password=xxxyyy
+    --port=3310 --prepare --target-dir=/data/backup/<br>
+    2.3 拷回数据：<br>
+    &nbsp; xtrabackup --host=172.16.1.52 --user=root --password=xxxyyy
+    --port=3310 --datadir=/data/crm --copy-back
+    --target-dir=/data/backup/<br>
+    2.3 修改目录属性启动数据库：<br>
+    &nbsp; chown -R mysql.mysql /data/crm<br>
+    &nbsp; chmod -R 755 /data/crm<br>
+    2.4 启动数据库实例:<br>
+    &nbsp;/etc/init.d/mysqld_multi start 3310<br>
+    &nbsp;<br>
+    2.5 若有主从的问题可以查看备份目录下的文件：<br>
+    &nbsp;# cat xtrabackup_binlog_pos_innodb <br>
+    crm_bin.001282&nbsp; 1049711778<br>
+    &nbsp;<br>
+    ---—-----------<br>
+    --增量备份：<br>
+    ---------------<br>
+    全量备份的目录为：mkdir&nbsp; -p /data/backup<br>
+    增量备份的目录为： mkdir -p /data/backupIncr<br>
+    0. 备份操作之前需要停止掉数据库：<br>
+    &nbsp;<br>
+    1.备份操作：<br>
+    1.1.全量备份：<br>
+    xtrabackup --defaults-file=/etc/my.cnf --host=172.16.1.52
+    --user=root --password=xxxyyy --port=3310 --backup --parallel=3
+    --target-dir=/data/backup/<br>
+    1.2.增量备份：<br>
+    xtrabackup --defaults-file=/etc/my.cnf --host=172.16.1.52
+    --user=root --password=xxxyyy --port=3310 --backup --parallel=3
+    --target-dir=/data/backupIncr&nbsp;
+    --incremental-basedir=/data/backup<br>
+    &nbsp;<br>
+    2.恢复操作：<br>
+    2.1 准备全备份的日志：<br>
+    xtrabackup --prepare --apply-log-only --target-dir=/data/backup<br>
+    2.2 准备增量备份的日志：<br>
+    xtrabackup --prepare --apply-log-only
+    --target-dir=/data/backup&nbsp; --incremental-dir=/data/backupIncr<br>
+    2.3 全备份准备：<br>
+    # xtrabackup --prepare --target-dir=/data/backup<br>
+    2.4 拷回数据：<br>
+    xtrabackup --host=172.16.1.52 --user=root --password=xxxyyy
+    --port=3310 --datadir=/data/crm --copy-back
+    --target-dir=/data/backup/<br>
+    &nbsp;<br>
+    2.5 修改数据目录的权限和属性：<br>
+    # chown -R mysql:mysql /data/crm<br>
+    chmod -R 755 /data/crm<br>
+    &nbsp;<br>
+    2.6 启动实例：<br>
+    /etc/init.d/mysqld_multi start 3310<br>
+    <br>
+    ————————————————<br>
+    版权声明：本文为CSDN博主「vkingnew」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>
+    原文链接：https://blog.csdn.net/vkingnew/article/details/83753179<br>
+  </body>
+</html>

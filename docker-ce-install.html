@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>docker-ce-install</title>
+  </head>
+  <body>
+    <br>
+    <h1 class="postTitle"> <a id="cb_post_title_url" class="postTitle2"
+        href="https://www.cnblogs.com/jmaly/p/7722863.html">在centos7上安装
+        Docker CE</a> </h1>
+    <h1><span style="font-size: 18px;">Docker CE的基本安装</span></h1>
+    <p><span style="font-size: 18px;">https://docs.docker.com/engine/installation/linux/docker-ce/centos/</span></p>
+    <h2><span style="font-size: 18px;">一、系统要求</span></h2>
+    <p><span style="font-size: 18px;">1、安装Docker CE，需要一个维护版本的Centos7</span></p>
+    <p><span style="font-size: 18px;">2、centos-extras库必须启用，这个存储库默认启用，但是如
+        果您禁用了它，您需要重新启用它（https://wiki.centos.org/AdditionalResources
+        /Repositories）</span></p>
+    <h2><span style="font-size: 18px;">二、卸载旧版本</span></h2>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum remove docker docker-common docker-selinux</span></pre>
+    </div>
+    <h2 class="highlight"><span style="font-size: 18px;"><code><span
+            class="se"><span class="se"><span class="se">三、安装Docker CE</span></span></span></code></span></h2>
+    <h3 id="install-docker-ce"><span style="font-size: 18px;">1、使用仓库安装</span></h3>
+    <h4 id="install-using-the-repository"><span style="font-size: 18px;">1）
+        安装需要的依赖包</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum install -y yum-utils device-mapper-persistent-data</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">2）配置稳定仓库</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">3）安装</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum install docker-ce</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">4）安装指定版本的Docker</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="color: #000000; font-size: 18px;">[root@docker ~]# yum list docker-ce --showduplicates | sort -r
+ * updates: mirrors.aliyun.com
+Loading mirror speeds from cached hostfile
+Loaded plugins: fastestmirror
+Installed Packages
+ * extras: mirrors.aliyun.com
+docker-ce.x86_64            17.09.0.ce-1.el7.centos            docker-ce-stable 
+docker-ce.x86_64            17.09.0.ce-1.el7.centos            @docker-ce-stable
+docker-ce.x86_64            17.06.2.ce-1.el7.centos            docker-ce-stable 
+docker-ce.x86_64            17.06.1.ce-1.el7.centos            docker-ce-stable 
+docker-ce.x86_64            17.06.0.ce-1.el7.centos            docker-ce-stable 
+docker-ce.x86_64            17.03.2.ce-1.el7.centos            docker-ce-stable 
+docker-ce.x86_64            17.03.1.ce-1.el7.centos            docker-ce-stable 
+docker-ce.x86_64            17.03.0.ce-1.el7.centos            docker-ce-stable 
+ * base: mirrors.aliyun.com
+Available Packages
+
+[root@docker ~]# yum install docker-ce-17.06.0.ce-1.el7.centos.x86_64</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">5）启动docker</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">systemctl start docker</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">5）验证docker是否安装正确</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">docker run hello-world</span></pre>
+    </div>
+    <h3><span style="font-size: 18px;">2、使用rpm包安装docker</span></h3>
+    <h4><span style="font-size: 18px;">1）稳定版下载地址：</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">2）安装</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum install -y /path/to/package.rpm</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">3）启动</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">systemctl start docker</span></pre>
+    </div>
+    <h4><span style="font-size: 18px;">4）版本升级</span></h4>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum -y upgrade  /path/to/package.rpm</span></pre>
+    </div>
+    <h3 class="highlight"><span style="font-size: 18px;">3、使用已有脚本安装</span></h3>
+    <div class="cnblogs_code">
+      <pre><span style="color: #000000; font-size: 18px;">curl -fsSL get.docker.com -o get-docker.sh
+sh get-docker.sh</span></pre>
+    </div>
+    <h3><span style="font-size: 18px;">4、配置Docker开机自启动</span></h3>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">systemctl enable docker</span></pre>
+    </div>
+    <p>&nbsp;</p>
+    <h2><span style="font-size: 18px;">四、卸载Docker CE</span></h2>
+    <p><span style="font-size: 18px;">卸载docker-ce</span></p>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">yum remove docker-ce</span></pre>
+    </div>
+    <p><span style="font-size: 18px;">在您的主机上的镜像、容器、卷或自定义配置文件不会自动删除，要删除所有
+        图像、容器和卷:</span></p>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">rm -rf /var/lib/docker</span></pre>
+    </div>
+    <h2>&nbsp;</h2>
+    <h1><span style="font-size: 18px;">Linux安装后的步骤</span></h1>
+    <p><span style="font-size: 18px;">https://docs.docker.com/engine/installation/linux/linux-postinstall/</span></p>
+    <h2 id="title"><span style="font-size: 18px;">一、使用非root用户管理Docker</span></h2>
+    <h3 id="manage-docker-as-a-non-root-user"><span style="font-size:
+        18px;">1、创建docker群组</span></h3>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">groupadd docker</span></pre>
+    </div>
+    <h3><span style="font-size: 18px;">2、添加需要管理docker的非root用户到docker群组</span></h3>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">usermod -aG docker $USER</span></pre>
+    </div>
+    <p class="highlight">&nbsp;</p>
+    <h1><span style="font-size: 18px;">故障排除</span></h1>
+    <p><span style="font-size: 18px;">https://docs.docker.com/engine/installation/linux/linux-postinstall/#troubleshooting</span></p>
+    <h3><span style="font-size: 18px;">1、内核兼容性</span></h3>
+    <p><span style="font-size: 18px;">如果您的内核版本3.10小，或者缺少一些模块，Docker将无法正常
+        运行。为了检查内核兼容性，您可以下载并运行check-compatibility.sh脚本</span></p>
+    <div class="cnblogs_code">
+      <pre><span style="color: #000000; font-size: 18px;">curl https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh &gt; check-config.sh
+
+bash ./check-config.sh</span></pre>
+    </div>
+    <h3><span style="font-size: 18px;">2、无法连接到docker deamon</span></h3>
+    <p><span style="font-size: 18px;">要查看您的docker客户端主机配置的是连接哪个主机，请检查您环境中
+        DOCKER_HOST变量的值。</span></p>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">env | grep DOCKER_HOST</span></pre>
+    </div>
+    <p><span style="font-size: 18px;">如果这个命令返回一个值，那么Docker客户端主机被设置为连接到运行
+        在那台主机上的Docker守护进程。如果未设置，则Docker客户端被连接到运行在本地主机上的Docker守护进程。如果设置错
+        误，请使用以下命令取消设置：</span></p>
+    <div class="cnblogs_code">
+      <pre><span style="font-size: 18px;">unset DOCKER_HOST</span></pre>
+    </div>
+    <p class="highlight">&nbsp;</p>
+    <pre class="highlight"><span style="font-size: 18px;"><code>&nbsp;</code></span></pre>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

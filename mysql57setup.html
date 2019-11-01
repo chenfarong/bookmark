@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+  <head>
+    <title>Welcome to SeaMonkey</title>
+    <link rel="stylesheet" type="text/css" href="/css/base/template.css"
+      media="screen">
+    <link rel="stylesheet" type="text/css" href="/css/base/content.css"
+      media="screen">
+    <link rel="stylesheet" type="text/css"
+      href="/css/artemia/template.css" title="Artemia Nyos"
+      media="screen">
+    <link rel="stylesheet" type="text/css"
+      href="/css/artemia/content.css" title="Artemia Nyos"
+      media="screen">
+    <link rel="icon" href="/images/seamonkey16.png" type="image/png">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <link rel="top" href="../" title="SeaMonkey Project">
+    <link rel="up" href="../" title="Home">
+    <script type="text/javascript" src="/download.js"></script>
+  </head>
+  <body id="seamonkeyproject-org">
+    centos 7 安装 mysql5.7<br>
+    <br>
+    wget
+    https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm<br>
+    rpm -ihv mysql80-community-release-el7-3.noarch.rpm<br>
+    yum -y install mysql-community-server&nbsp; mysql-community-client
+    --disablerepo=mysql80-community --enablerepo=mysql57-community<br>
+    <br>
+    systemctl start mysqld<br>
+    <br>
+    grep "password" /var/log/mysqld.log<br>
+    <br>
+    alter user 'root'@'localhost' identified by 'dust#909*A';<br>
+    <br>
+    <br>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <pre> <span style="color: #0000ff;">create</span> <span style="color: #ff00ff;">user</span>  <span style="color: #ff0000;">'</span><span style="color: #ff0000;">admin</span><span style="color: #ff0000;">'</span>@<span style="color: #ff0000;">'</span><span style="color: #ff0000;">%</span><span style="color: #ff0000;">'</span> identified <span style="color: #0000ff;">by</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">admin123</span><span style="color: #ff0000;">'</span><span style="color: #000000;">;<br><br>create user 'jianghu'@'%' identified by '~12345tgbA';<br><br></span></pre>
+    grant all on *.* to 'jianghu'@'%' ;<br>
+    <br>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <pre><span style="color: #0000ff;">grant</span> <span style="color: #808080;">all</span> <span style="color: #0000ff;">on</span> <span style="color: #808080;">*</span>.<span style="color: #808080;">*</span> <span style="color: #0000ff;">to</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">admin</span><span style="color: #ff0000;">'</span>@<span style="color: #ff0000;">'</span><span style="color: #ff0000;">%</span><span style="color: #ff0000;">'</span><span style="color: #000000;"> ;<br></span><meta http-equiv="content-type" content="text/html; charset=UTF-8"> flush <span style="color: #0000ff;">privileges</span><span style="color: #000000;">;<br><br><br>create database jianghudb default character set utf8mb4 collate utf8mb4_unicode_ci;<br><br><br></span><br><span style="color: #000000;"><meta charset="utf-8"><a href="https://help.aliyun.com/document_detail/25446.html">https://help.aliyun.com/document_detail/25446.html</a><br></span><br><span style="color: #000000;"><meta charset="utf-8"><a href="https://help.aliyun.com/document_detail/25426.html?spm=a2c4g.11186623.2.28.29d37d56sgFy1M#concept-jl1-qzd-wdb">https://help.aliyun.com/document_detail/25426.html?spm=a2c4g.11186623.2.28.29d37d56sgFy1M#concept-jl1-qzd-wdb</a><br><br></span><br><span style="color: #000000;"><meta charset="utf-8"><span style="color: rgb(248, 248, 242); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(40, 42, 54); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">[mysqld]
+character-set-server=utf8
+collation-server=utf8mb4_general_ci[###或者是utf8mb4_unicode_ci]<br><br><br><br><br><br><br><br><br>[mysqld]<br>#<br># Remove leading # and set to the amount of RAM for the most important data<br># cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.<br># innodb_buffer_pool_size = 128M<br>#<br># Remove leading # to turn on a very important data integrity option: logging<br># changes to the binary log between backups.<br># log_bin<br>#<br># Remove leading # to set options mainly useful for reporting servers.<br># The server defaults are faster for transactions and fast SELECTs.<br># Adjust sizes as needed, experiment to find the optimal values.<br># join_buffer_size = 128M<br># sort_buffer_size = 2M<br># read_rnd_buffer_size = 2M<br>datadir=/data/var/lib/mysql<br>socket=/var/lib/mysql/mysql.sock<br><br>character-set-server=utf8mb4<br>collation-server=utf8mb4_general_ci<br><br># Disabling symbolic-links is recommended to prevent assorted security risks<br>symbolic-links=0<br><br>log-error=/var/log/mysqld.log<br>pid-file=/var/run/mysqld/mysqld.pid<br><br>sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'<br><br>#skip-grant-tables<br><br><br><br></span></span><span style="color: #000000;"></span></pre>
+  </body>
+</html>

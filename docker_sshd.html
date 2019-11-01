@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>docker sshd</title>
+  </head>
+  <body>
+    <meta charset="utf-8">
+    <h1 class="_1RuRku" style="box-sizing: border-box; margin-top: 0px;
+      margin-bottom: 0.5em; color: rgb(64, 64, 64); font-weight: 700;
+      text-rendering: optimizelegibility; font-size: 30px; word-break:
+      break-word; font-family: -apple-system, system-ui, &quot;Apple
+      Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI
+      Symbol&quot;, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;,
+      &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;,
+      &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+      font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; text-decoration-style: initial;
+      text-decoration-color: initial;">ssh远程连接docker中
+      linux(ubuntu/centos)</h1>
+    <div class="rEsl9f" style="box-sizing: border-box; -webkit-box-pack:
+      justify; justify-content: space-between; -webkit-box-align:
+      center; align-items: center; margin-bottom: 32px; color: rgb(150,
+      150, 150); font-size: 13px; display: flex; font-family:
+      -apple-system, system-ui, &quot;Apple Color Emoji&quot;,
+      &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;,
+      &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans
+      GB&quot;, &quot;Microsoft YaHei&quot;, &quot;Helvetica Neue&quot;,
+      Helvetica, Arial, sans-serif; font-style: normal;
+      font-variant-ligatures: normal; font-variant-caps: normal;
+      font-weight: 400; letter-spacing: normal; orphans: 2; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width:
+      0px; text-decoration-style: initial; text-decoration-color:
+      initial;">
+      <div class="s-dsoj" style="box-sizing: border-box; display: flex;"><time
+          datetime="2016-11-11T16:12:54.000Z" style="box-sizing:
+          border-box; margin-right: 8px;">2016.11.12 00:12:54</time><span
+          style="box-sizing: border-box; margin-right: 8px;">字数 315</span><span
+          style="box-sizing: border-box;">阅读 2825</span></div>
+    </div>
+    <article class="_2rhmJa" style="box-sizing: border-box; display:
+      block; font-weight: 400; line-height: 1.8; margin-bottom: 20px;
+      color: rgb(64, 64, 64); font-family: -apple-system, system-ui,
+      &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;,
+      &quot;Segoe UI Symbol&quot;, &quot;Segoe UI&quot;, &quot;PingFang
+      SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft
+      YaHei&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial,
+      sans-serif; font-size: 16px; font-style: normal;
+      font-variant-ligatures: normal; font-variant-caps: normal;
+      letter-spacing: normal; orphans: 2; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      text-decoration-style: initial; text-decoration-color: initial;">
+      <h1 style="box-sizing: border-box; margin: 0px 0px 16px; color:
+        rgb(64, 64, 64); font-weight: 700; text-rendering:
+        optimizelegibility; font-size: 26px;">centos</h1>
+      <p style="box-sizing: border-box; margin-top: 0px; margin-bottom:
+        20px; word-break: break-word;"><code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">docker pull centos:latest</code><span>&nbsp;</span>下
+        载centos7镜像<br style="box-sizing: border-box;">
+        <code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">docker run -i -t centos:latest /bin/bash</code>运
+        行下载好的centos7镜像<br style="box-sizing: border-box;">
+        <code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">yum install passwd openssl openssh-server -y</code><br
+          style="box-sizing: border-box;">
+        启动sshd:<br style="box-sizing: border-box;">
+        <code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">/usr/sbin/sshd -D</code><br
+          style="box-sizing: border-box;">
+        这时报以下错误：<br style="box-sizing: border-box;">
+        &lt;pre&gt;<br style="box-sizing: border-box;">
+        [root@ b5926410fe60 /]# /usr/sbin/sshd<br style="box-sizing:
+          border-box;">
+        Could not load host key: /etc/ssh/ssh_host_rsa_key<br
+          style="box-sizing: border-box;">
+        Could not load host key: /etc/ssh/ssh_host_ecdsa_key<br
+          style="box-sizing: border-box;">
+        Could not load host key: /etc/ssh/ssh_host_ed25519_key<br
+          style="box-sizing: border-box;">
+        &lt;/pre&gt;<br style="box-sizing: border-box;">
+        执行以下命令解决：<br style="box-sizing: border-box;">
+        &lt;pre&gt;<br style="box-sizing: border-box;">
+        [root@b5926410fe60 /]# ssh-keygen -q -t rsa -b 2048 -f
+        /etc/ssh/ssh_host_rsa_key -N ''<br style="box-sizing:
+          border-box;">
+        [root@b5926410fe60 /]# ssh-keygen -q -t ecdsa -f
+        /etc/ssh/ssh_host_ecdsa_key -N ''<br style="box-sizing:
+          border-box;">
+        [root@b5926410fe60 /]# ssh-keygen -t dsa -f
+        /etc/ssh/ssh_host_ed25519_key -N ''<br style="box-sizing:
+          border-box;">
+        &lt;/pre&gt;<br style="box-sizing: border-box;">
+        然后，修改 /etc/ssh/sshd_config 配置信息：</p>
+      <ul style="box-sizing: border-box; margin: 0px 0px 20px 20px;
+        padding-left: 0px; list-style: disc; word-break: break-word;">
+        <li style="box-sizing: border-box; line-height: 30px;">将端口22的注释去
+          掉、permitrootlogin yes打开、protocol 2打开</li>
+        <li style="box-sizing: border-box; line-height: 30px;">UsePAM
+          yes 改为 UsePAM no</li>
+        <li style="box-sizing: border-box; line-height: 30px;">UsePrivilegeSeparation
+          sandbox 改为 UsePrivilegeSeparation no<br style="box-sizing:
+            border-box;">
+          接着执行<br style="box-sizing: border-box;">
+          &lt;pre&gt;<br style="box-sizing: border-box;">
+          [root@b5926410fe60 /]# sed -i "s/#UsePrivilegeSeparation.<em
+            style="box-sizing: border-box;">/UsePrivilegeSeparation
+            no/g" /etc/ssh/sshd_config<br style="box-sizing:
+              border-box;">
+            [root@b5926410fe60 /]# sed -i "s/UsePAM.</em>/UsePAM no/g"
+          /etc/ssh/sshd_config<br style="box-sizing: border-box;">
+          &lt;/pre&gt;<br style="box-sizing: border-box;">
+          修改完后，重新启动sshd<br style="box-sizing: border-box;">
+          <code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">/usr/sbin/sshd -D</code><br
+            style="box-sizing: border-box;">
+          修改容器中的密码<br style="box-sizing: border-box;">
+          通过<code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">passwd</code>命
+          令</li>
+      </ul>
+      <p style="box-sizing: border-box; margin-top: 0px; margin-bottom:
+        20px; word-break: break-word;">通过上述操作，再将此时容器保存为镜像<br
+          style="box-sizing: border-box;">
+        <code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">docker commit b5926410fe60 centos7-ssh</code><br
+          style="box-sizing: border-box;">
+        删除之前的容器<br style="box-sizing: border-box;">
+        基于新镜像运行容器<br style="box-sizing: border-box;">
+        <code style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 2px 4px; border: none; vertical-align: middle; white-space: pre-wrap; color: rgb(199, 37, 78); background-color: rgb(242, 242, 242);">docker run -d -p 10022:22 centos7-ssh:latest /usr/sbin/sshd -D</code></p>
+      <p style="box-sizing: border-box; margin-top: 0px; margin-bottom:
+        20px; word-break: break-word;">从远程连接<br style="box-sizing:
+          border-box;">
+        ssh root@宿主机ip -p 10022</p>
+      <p style="box-sizing: border-box; margin-top: 0px; margin-bottom:
+        20px; word-break: break-word;">到此为止，成功。</p>
+    </article>
+  </body>
+</html>
