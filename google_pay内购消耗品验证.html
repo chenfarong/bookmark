@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <table>
+      <tbody>
+        <tr>
+          <th scope="col">响应代码</th>
+          <th scope="col">值</th>
+          <th scope="col">说明</th>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_OK</span></code></td>
+          <td>0</td>
+          <td>成功</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_USER_CANCELED</span></code></td>
+          <td>1</td>
+          <td>用户按上一步或取消对话框</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_SERVICE_UNAVAILABLE</span></code></td>
+          <td>2</td>
+          <td>网络连接断开</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_BILLING_UNAVAILABLE</span></code></td>
+          <td>3</td>
+          <td>所请求的类型不支持 Google Play 结算服务 AIDL 版本</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_ITEM_UNAVAILABLE</span></code></td>
+          <td>4</td>
+          <td>请求的商品已不再出售</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_DEVELOPER_ERROR</span></code></td>
+          <td>5</td>
+          <td>提供给 API 的参数无效。此错误也可能说明应用未针对 Google Play
+            结算服务正确签名或设置，或者在其清单中缺少必要的权限。</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_ERROR</span></code></td>
+          <td>6</td>
+          <td>API 操作期间出现严重错误</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_ITEM_ALREADY_OWNED</span></code></td>
+          <td>7</td>
+          <td>未能购买，因为已经拥有此商品</td>
+        </tr>
+        <tr>
+          <td><code><span>BILLING_RESPONSE_RESULT_ITEM_NOT_OWNED</span></code></td>
+          <td>8</td>
+          <td>未能消费，因为尚未拥有此商品<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    &lt;?php<br>
+    <br>
+    include
+    "/var/www/html/abc/google-api-php-client-2.4.0/vendor/autoload.php";<br>
+    <br>
+    $package_name="com.dustglobal.googleplay.xiuxian";<br>
+    $product_id="com.dustglobal.googleplay.xiuxian.handofcoins";<br>
+$purchase_token="jbfpjoejbdlledkcegjffdmh.AO-J1OygtIVIj1NztRPPWq1MKEn1-ax6v4wwdn0M2O0wEJx9wMcH8EZSCWWg3CncKHguTqCIQg9Byf6ujIe0-UmVCPkwm_m_I6HifdxSi0kzIerd-H4akuhdwlGY-TzXUeZbkdsLRhgxiBnMlhE6wR18QtPhTqpZFCx38iOZs2aflXUwdVLDqeLlThjc1BW_qTBYttU3NZoi";<br>
+    <br>
+    $oauth_file="./gp.json";<br>
+    <br>
+    $google_client = new \Google_Client();<br>
+    $google_client-&gt;setApplicationName($package_name);<br>
+    $google_client-&gt;setClientId("109010220082781726375");<br>
+$google_client-&gt;setScopes(array('https://www.googleapis.com/auth/androidpublisher'));<br>
+    $google_client-&gt;setAuthConfig($oauth_file);<br>
+    $androidPublishService = new
+    \Google_Service_AndroidPublisher($google_client);<br>
+    $result = $androidPublishService-&gt;purchases_products-&gt;get(<br>
+    &nbsp;&nbsp;&nbsp; $package_name,<br>
+    &nbsp;&nbsp;&nbsp; $product_id,<br>
+    &nbsp;&nbsp;&nbsp; $purchase_token<br>
+    );<br>
+    <br>
+    var_dump($result);<br>
+    <br>
+    <br>
+    ?&gt;<br>
+    <br>
+    <br>
+    <br>
+    https://github.com/googleapis/google-api-php-client<br>
+    <meta charset="utf-8">
+    <a href="https://blog.csdn.net/ITzaibadong/article/details/83056731">https://blog.csdn.net/ITzaibadong/article/details/83056731</a><br>
+    <br>
+    <meta charset="utf-8">
+    <a href="https://blog.csdn.net/fableboy/article/details/44891127">https://blog.csdn.net/fableboy/article/details/44891127</a><br>
+    <br>
+    http://www.jeepshoe.net/art/41387.html<br>
+    <br>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <p>死活都是401。。。没道理啊，我新建的service account是project owner啊，为什么呢。。。</p>
+    <p><span style="color:#f33b45;"><u><strong>原来要把新建的service
+            account的那个email加到测试组里</strong></u></span></p>
+    <p style="text-align:center;"><br>
+    </p>
+    <p style="text-align:center;"><br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <a
+      href="https://blog.csdn.net/aixiaoming55/article/details/79584475">https://blog.csdn.net/aixiaoming55/article/details/79584475</a><br>
+    <br>
+    <br>
+    &lt;?php<br>
+    require_once 'Google/Client.php';<br>
+    require_once 'Google/Service/AndroidPublisher.php';<br>
+    //include 'Google/Auth/AssertionCredentials.php';<br>
+    &nbsp;<br>
+    try{<br>
+    $client = new Google_Client();<br>
+    $key_file_location = 'prikey.p12';<br>
+    $key = file_get_contents($key_file_location);<br>
+    $service_account_name =
+'xxxxxxxxxxxx-t1280g9vsd7465aprh0xxxxxxxxxxx@developer.gserviceaccount.com';<br>
+    $cred = new Google_Auth_AssertionCredentials(<br>
+    &nbsp; // Replace this with the email address from the client.<br>
+    &nbsp; $service_account_name,<br>
+    &nbsp; // Replace this with the scopes you are requesting.<br>
+    &nbsp; array('https://www.googleapis.com/auth/androidpublisher'),<br>
+    &nbsp; $key<br>
+    );<br>
+    &nbsp;<br>
+    $client-&gt;setAssertionCredentials($cred);<br>
+    &nbsp;<br>
+    &nbsp;<br>
+    $service = new Google_Service_AndroidPublisher( $client );<br>
+    $packageName='com.xxxx.xxxx';<br>
+    $productId='9419';<br>
+    $token =
+'omoaokhfkmiipfffmemjaclh.AO-J1OyFcurjPmcY4J5MFMYvW5z6jq-X9SrpZCo93etscPe0SzDItMnAY50RLWLwOEYl71HQEBXG8fREgJp-EVZTOwkG8uHuKf3UPlx0u8rwK7Qw4bRE9SI';<br>
+    $optps=array();<br>
+    $resp = $service-&gt;purchases_products-&gt;get( $packageName,
+    $productId, $token, $optps );<br>
+    $resp = (array)$resp;<br>
+    var_dump($resp);<br>
+    }catch(Exception $e){<br>
+    &nbsp;&nbsp;&nbsp; echo $e-&gt;getCode(),'|',$e-&gt;getMessage();<br>
+    }<br>
+    &nbsp;<br>
+    ?&gt;<br>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <a href="https://www.jianshu.com/p/7a8b5aad6d85">https://www.jianshu.com/p/7a8b5aad6d85</a><br>
+    <br>
+https://developer.android.com/google/play/billing/billing_reference?hl=zh-cn<br>
+    <br>
+https://developers.google.com/android-publisher/api-ref/purchases/products<br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

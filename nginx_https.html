@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>nginx_https</title>
+  </head>
+  <body>
+    <meta charset="utf-8">
+    <div class="article-header-box" style="box-sizing: inherit; outline:
+      0px; margin: 0px; padding: 16px 0px 0px; border-bottom: 1px solid
+      rgb(224, 224, 224); z-index: 9; background-color: rgb(255, 255,
+      255); color: rgba(0, 0, 0, 0.75); font-family: -apple-system,
+      &quot;SF UI Text&quot;, Arial, &quot;PingFang SC&quot;,
+      &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;,
+      &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 14px;
+      font-style: normal; font-variant-ligatures: common-ligatures;
+      font-variant-caps: normal; font-weight: 400; letter-spacing:
+      normal; orphans: 2; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      text-decoration-style: initial; text-decoration-color: initial;">
+      <div class="article-header" style="box-sizing: inherit; outline:
+        0px; margin: 0px; padding: 0px;">
+        <div class="article-title-box" style="box-sizing: inherit;
+          outline: 0px; margin: 0px 0px 8px; padding: 0px;">
+          <h1 class="title-article" style="box-sizing: inherit; outline:
+            0px; margin: 0.67em 0px; padding: 0px; font-size: 24px;
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+            Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+            sans-serif; overflow-wrap: break-word;">nginx配置HTTPS</h1>
+        </div>
+        <div class="article-info-box" style="box-sizing: inherit;
+          outline: 0px; margin: 0px; padding: 0px 0px 14px; position:
+          relative;">
+          <div class="article-bar-top" style="box-sizing: inherit;
+            outline: 0px; margin: 0px; padding: 0px; color: rgb(133,
+            133, 133); width: 846.55px; height: 24px; overflow: hidden;"><span
+              class="time" style="box-sizing: inherit; outline: 0px;
+              margin: 0px 14px 0px 0px; padding: 0px; font-family:
+              &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+              Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;">2016-09-19
+              18:23:24</span><span>&nbsp;</span><a
+              class="follow-nickName"
+              href="https://me.csdn.net/weixin_35884835" target="_blank"
+              rel="noopener" style="box-sizing: inherit; outline: 0px;
+              margin: 0px 14px 0px 0px; padding: 0px; color: rgb(120,
+              165, 241); text-decoration: none !important; cursor:
+              pointer; font-family: &quot;Microsoft YaHei&quot;,
+              &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+              &quot;PingFang SC&quot;, sans-serif; background-color:
+              transparent;">郎空</a><span>&nbsp;</span><span
+              class="read-count" style="box-sizing: inherit; outline:
+              0px; margin: 0px 14px 0px 0px; padding: 0px; font-family:
+              &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+              Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;">阅
+              读数 85627</span><span class="article_info_click"
+              style="box-sizing: inherit; outline: 0px; margin: 0px 14px
+              0px 0px; padding: 0px; font-family: &quot;Microsoft
+              YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+              Arial, &quot;PingFang SC&quot;, sans-serif; font-size:
+              12px; color: rgb(51, 153, 234); letter-spacing: 0px;
+              line-height: 20px; cursor: pointer; background-color:
+              rgb(255, 255, 255); top: 0px; right: 101px; width: 45px;
+              display: inline-block; position: static;">更多</span>
+            <div class="tags-box space" style="box-sizing: inherit;
+              outline: 0px; margin: 6px 0px 0px; padding: 0px;
+              font-size: 12px;"><span class="label" style="box-sizing:
+                inherit; outline: 0px; margin: 0px 14px 0px 0px;
+                padding: 0px; font-family: &quot;Microsoft YaHei&quot;,
+                &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+                &quot;PingFang SC&quot;, sans-serif; color: rgb(77, 77,
+                77);">分类专栏：</span><span>&nbsp;</span><a class="tag-link"
+                target="_blank" rel="noopener"
+                href="https://blog.csdn.net/weixin_35884835/article/category/6368260"
+                style="box-sizing: inherit; outline: 0px; margin: 0px
+                24px 0px 0px; padding: 0px; color: rgb(121, 165, 229);
+                text-decoration: none !important; cursor: pointer;
+                font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+                Display&quot;, Roboto, Noto, Arial, &quot;PingFang
+                SC&quot;, sans-serif; background-color: transparent;
+                display: inline-block; overflow-wrap: break-word;">Nginx</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <article class="baidu_pl" style="box-sizing: inherit; outline: 0px;
+      margin: 0px; padding: 16px 0px 0px; display: block; position:
+      relative; color: rgba(0, 0, 0, 0.75); font-family: -apple-system,
+      &quot;SF UI Text&quot;, Arial, &quot;PingFang SC&quot;,
+      &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;,
+      &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 14px;
+      font-style: normal; font-variant-ligatures: common-ligatures;
+      font-variant-caps: normal; font-weight: 400; letter-spacing:
+      normal; orphans: 2; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      text-decoration-style: initial; text-decoration-color: initial;">
+      <div id="article_content" class="article_content clearfix"
+        style="box-sizing: inherit; outline: 0px; margin: 0px; padding:
+        0px; overflow-wrap: break-word;">
+        <div class="article-copyright" style="box-sizing: inherit;
+          outline: 0px; margin: 0px 0px 16px; padding: 0px;
+          overflow-wrap: break-word; font-size: 12px; color: rgb(153,
+          153, 153);"><span class="creativecommons" style="box-sizing:
+            inherit; outline: 0px; margin: 0px; padding: 0px;
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+            Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+            sans-serif; overflow-wrap: break-word; color: rgb(77, 77,
+            77); word-break: break-all;"><span style="box-sizing:
+              inherit; outline: 0px; margin: 0px; padding: 0px;
+              font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+              Display&quot;, Roboto, Noto, Arial, &quot;PingFang
+              SC&quot;, sans-serif; overflow-wrap: break-word;
+              vertical-align: text-bottom;">版权声明：本文为博主原创文章，遵循<a
+                href="http://creativecommons.org/licenses/by-sa/4.0/"
+                target="_blank" rel="noopener" style="box-sizing:
+                inherit; outline: 0px; margin: 0px; padding: 0px; color:
+                rgb(51, 153, 234); text-decoration: none !important;
+                cursor: pointer; font-family: &quot;Microsoft
+                YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+                Arial, &quot;PingFang SC&quot;, sans-serif;
+                background-color: transparent; overflow-wrap:
+                break-word; font-size: 14px;"><span>&nbsp;</span>CC 4.0
+                BY-SA<span>&nbsp;</span></a>版权协议，转载请附上原文出处链接和本声明。</span>
+            <div class="article-source-link2222" style="box-sizing:
+              inherit; outline: 0px; margin: 0px; padding: 0px;
+              overflow-wrap: break-word;">本文链接：<a
+                href="https://blog.csdn.net/weixin_35884835/article/details/52588157"
+                style="box-sizing: inherit; outline: 0px; margin: 0px;
+                padding: 0px; color: rgb(51, 153, 234); text-decoration:
+                none !important; cursor: pointer; font-family:
+                &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+                Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+                sans-serif; background-color: transparent;
+                overflow-wrap: break-word; font-size: 14px;">https://blog.csdn.net/weixin_35884835/article/details/52588157</a></div>
+          </span></div>
+        <div id="content_views" class="markdown_views"
+          style="box-sizing: inherit; outline: 0px; margin: 0px;
+          padding: 0px; word-break: break-word !important; font-family:
+          -apple-system, &quot;SF UI Text&quot;, Arial, &quot;PingFang
+          SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft
+          YaHei&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif;
+          overflow-wrap: break-word; position: relative; min-height:
+          70px;">
+          <h2 id="使用ssl模块配置同时支持http和https并存" style="box-sizing:
+            border-box; outline: 0px; margin: 8px 0px 16px; padding:
+            0px; font-size: 24px; font-family: &quot;Microsoft
+            YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+            Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79,
+            79, 79); font-weight: 700; line-height: 32px; overflow-wrap:
+            break-word;"><a name="t0" style="box-sizing: border-box;
+              outline: 0px; margin: 0px; padding: 0px; color: rgb(78,
+              161, 219); text-decoration: none; cursor: pointer;
+              font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+              Display&quot;, Roboto, Noto, Arial, &quot;PingFang
+              SC&quot;, sans-serif; background-color: transparent;
+              overflow-wrap: break-word;"></a>使用ssl模块配置同时支持http和https并存</h2>
+          <h2 id="一生成证书" style="box-sizing: border-box; outline: 0px;
+            margin: 8px 0px 16px; padding: 0px; font-size: 24px;
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+            Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+            sans-serif; color: rgb(79, 79, 79); font-weight: 700;
+            line-height: 32px; overflow-wrap: break-word;"><a name="t1"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; color: rgb(78, 161, 219); text-decoration:
+              none; cursor: pointer; font-family: &quot;Microsoft
+              YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+              Arial, &quot;PingFang SC&quot;, sans-serif;
+              background-color: transparent; overflow-wrap: break-word;"></a>一，
+            生成证书</h2>
+          <pre class="prettyprint" name="code" style="box-sizing: border-box; outline: 0px; margin: 0px 0px 24px; padding: 8px 16px 6px 56px; position: relative; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; overflow: auto hidden; line-height: 22px; color: rgb(0, 0, 0); overflow-wrap: break-word; background-color: rgb(246, 248, 250); border: none;"><code class="hljs avrasm has-numbering" onclick="mdcp.signin(event)" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; display: block; overflow-x: auto; color: rgb(79, 79, 79) !important; background: rgb(246, 248, 250); line-height: 22px; border-radius: 4px; white-space: pre; overflow-wrap: break-word; min-width: 94%; text-size-adjust: none; position: unset;"><span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;"># 1、首先，进入你想创建证书和私钥的目录，例如：</span>
+cd /etc/nginx/
+
+<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;"># 2、创建服务器私钥，命令会让你输入一个口令：</span>
+openssl genrsa -des3 -<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">out</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span> <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">1024</span>
+
+<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;"># 3、创建签名请求的证书（CSR）：</span>
+openssl req -new -key server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span> -<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">out</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.csr</span>
+ls<br>&nbsp;<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;"># 4、在加载SSL支持的Nginx并使用上述私钥时除去必须的口令：</span>
+<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">cp</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span><span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.org</span>
+openssl rsa -<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">in</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span><span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.org</span> -<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">out</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span>
+
+
+<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;"># 5、最后标记证书使用上述私钥和CSR：</span>
+openssl x509 -req -days <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">365</span> -<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">in</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.csr</span> -signkey server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.key</span> -<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">out</span> server<span class="hljs-preprocessor" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; overflow-wrap: break-word; color: rgb(0, 153, 0) !important;">.crt</span></code><ul class="pre-numbering" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px 0px; list-style: none; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 16px; overflow-wrap: break-word; position: absolute; width: 48px; background-color: rgb(238, 240, 244); top: 0px; left: 0px; text-align: right;"><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">1</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">2</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">3</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">4</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">5</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">6</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">7</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">8</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">9</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">10</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">11</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">12</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">13</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">14</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">15</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">16</li></ul></pre>
+          <h2 id="二配置nginx" style="box-sizing: border-box; outline: 0px;
+            margin: 8px 0px 16px; padding: 0px; font-size: 24px;
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+            Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+            sans-serif; color: rgb(79, 79, 79); font-weight: 700;
+            line-height: 32px; overflow-wrap: break-word;"><a name="t2"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; color: rgb(78, 161, 219); text-decoration:
+              none; cursor: pointer; font-family: &quot;Microsoft
+              YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+              Arial, &quot;PingFang SC&quot;, sans-serif;
+              background-color: transparent; overflow-wrap: break-word;"></a>二，
+            配置nginx</h2>
+          <pre class="prettyprint" name="code" style="box-sizing: border-box; outline: 0px; margin: 0px 0px 24px; padding: 8px 16px 6px 56px; position: relative; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; overflow: auto hidden; line-height: 22px; color: rgb(0, 0, 0); overflow-wrap: break-word; background-color: rgb(246, 248, 250); border: none;"><code class="hljs bash has-numbering" onclick="mdcp.signin(event)" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; display: block; overflow-x: auto; color: rgb(79, 79, 79) !important; background: rgb(246, 248, 250); line-height: 22px; border-radius: 4px; white-space: pre; overflow-wrap: break-word; min-width: 94%; text-size-adjust: none; position: unset;"><span class="hljs-built_in" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">cd</span> /etc/nginx
+vim nginx.conf
+<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#</span>
+<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;"># HTTPS server configuration</span>
+<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#</span>
+server {
+    listen       <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">443</span>;
+    server_name  本机的IP地址;
+
+    ssl                  on;
+    ssl_certificate      /etc/nginx/server.crt;
+    ssl_certificate_key  /etc/nginx/server.key;
+
+    ssl_session_timeout  <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">5</span>m;
+
+<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#    ssl_protocols  SSLv2 SSLv3 TLSv1;</span>
+<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;</span>
+<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#    ssl_prefer_server_ciphers   on;</span>
+
+    location / {
+        <span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#root   html;</span>
+        <span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: inherit; overflow-wrap: break-word;">#index  testssl.html index.html index.htm;</span>
+     proxy_redirect off;
+     proxy_<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">set</span>_header Host <span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">$host</span>;
+     proxy_<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">set</span>_header X-Real-IP <span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">$remote_addr</span>;
+     proxy_<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">set</span>_header X-Forwarded-For <span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">$proxy_add_x_forwarded_for</span>;
+     proxy_pass http://IP地址/ssl/;
+    }
+}</code><ul class="pre-numbering" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px 0px; list-style: none; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 16px; overflow-wrap: break-word; position: absolute; width: 48px; background-color: rgb(238, 240, 244); top: 0px; left: 0px; text-align: right;"><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">1</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">2</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">3</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">4</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">5</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">6</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">7</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">8</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">9</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">10</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">11</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">12</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">13</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">14</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">15</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">16</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">17</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">18</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">19</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">20</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">21</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">22</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">23</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">24</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">25</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">26</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">27</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">28</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">29</li></ul></pre>
+          <p style="box-sizing: border-box; outline: 0px; margin: 0px
+            0px 16px; padding: 0px; font-family: &quot;Microsoft
+            YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+            Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 16px;
+            color: rgb(77, 77, 77); font-weight: 400; line-height: 26px;
+            overflow-wrap: break-word;">重启nginx，在浏览器输入：<a
+              href="https://ip/" rel="nofollow" style="box-sizing:
+              border-box; outline: 0px; margin: 0px; padding: 0px;
+              color: rgb(103, 149, 181); text-decoration: none; cursor:
+              pointer; font-family: &quot;Microsoft YaHei&quot;,
+              &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+              &quot;PingFang SC&quot;, sans-serif; background-color:
+              transparent; overflow-wrap: break-word;">https://IP</a>地址
+            会跳转到<span>&nbsp;</span><a href="http://ip/" rel="nofollow"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; color: rgb(103, 149, 181); text-decoration:
+              none; cursor: pointer; font-family: &quot;Microsoft
+              YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+              Arial, &quot;PingFang SC&quot;, sans-serif;
+              background-color: transparent; overflow-wrap: break-word;">http://IP</a>地
+            址/ssl/ 这个地址（后期调整为webservice接口地址即可）</p>
+          <h2 id="三受浏览器信任的startssl免费ssl证书" style="box-sizing:
+            border-box; outline: 0px; margin: 8px 0px 16px; padding:
+            0px; font-size: 24px; font-family: &quot;Microsoft
+            YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+            Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79,
+            79, 79); font-weight: 700; line-height: 32px; overflow-wrap:
+            break-word;"><a name="t3" style="box-sizing: border-box;
+              outline: 0px; margin: 0px; padding: 0px; color: rgb(78,
+              161, 219); text-decoration: none; cursor: pointer;
+              font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+              Display&quot;, Roboto, Noto, Arial, &quot;PingFang
+              SC&quot;, sans-serif; background-color: transparent;
+              overflow-wrap: break-word;"></a>三、受浏览器信任的StartSSL免费SSL证书：</h2>
+          <p style="box-sizing: border-box; outline: 0px; margin: 0px
+            0px 16px; padding: 0px; font-family: &quot;Microsoft
+            YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+            Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 16px;
+            color: rgb(77, 77, 77); font-weight: 400; line-height: 26px;
+            overflow-wrap: break-word;">跟VeriSign一样，StartSSL（网址：<a
+              href="http://www.startssl.com/" rel="nofollow"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; color: rgb(103, 149, 181); text-decoration:
+              none; cursor: pointer; font-family: &quot;Microsoft
+              YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+              Arial, &quot;PingFang SC&quot;, sans-serif;
+              background-color: transparent; overflow-wrap: break-word;">http://www.startssl.com</a>，
+            公司名：StartCom）也是一家CA机构，</p>
+          <p style="box-sizing: border-box; outline: 0px; margin: 0px
+            0px 16px; padding: 0px; font-family: &quot;Microsoft
+            YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+            Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 16px;
+            color: rgb(77, 77, 77); font-weight: 400; line-height: 26px;
+            overflow-wrap: break-word;">它的根证书很
+            久之前就被一些具有开源背景的浏览器支持（Firefox浏览器、谷歌Chrome浏览器、苹果Safari浏览器等）。</p>
+          <h2
+            id="四项目需要将访问目录-services-由http访问-重定向到-https-解决方法nginx-rewrite-加上
+            -location-方式实现" style="box-sizing: border-box; outline: 0px;
+            margin: 8px 0px 16px; padding: 0px; font-size: 24px;
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+            Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;,
+            sans-serif; color: rgb(79, 79, 79); font-weight: 700;
+            line-height: 32px; overflow-wrap: break-word;"><a name="t4"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; color: rgb(78, 161, 219); text-decoration:
+              none; cursor: pointer; font-family: &quot;Microsoft
+              YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto,
+              Arial, &quot;PingFang SC&quot;, sans-serif;
+              background-color: transparent; overflow-wrap: break-word;"></a>四、
+            项目需要，将访问目录 \services\ 由http访问 重定向到 https （解决方法：nginx rewrite
+            加上 location 方式实现）</h2>
+          <pre class="prettyprint" name="code" style="box-sizing: border-box; outline: 0px; margin: 0px 0px 24px; padding: 8px 16px 6px 56px; position: relative; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; overflow: auto hidden; line-height: 22px; color: rgb(0, 0, 0); overflow-wrap: break-word; background-color: rgb(246, 248, 250); border: none;"><code class="hljs ruby has-numbering" onclick="mdcp.signin(event)" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; display: block; overflow-x: auto; color: rgb(79, 79, 79) !important; background: rgb(246, 248, 250); line-height: 22px; border-radius: 4px; white-space: pre; overflow-wrap: break-word; min-width: 94%; text-size-adjust: none; position: unset;">location ~ <span class="hljs-regexp" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 136, 0) !important; font-size: inherit; overflow-wrap: break-word;">/services/</span>.*<span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">$ </span>{
+        <span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">if</span> (<span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">$server_port</span> ~ <span class="hljs-string" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">"^80$"</span>){
+            set <span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">$rule_0</span> <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">1</span><span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">$rule_0</span>;
+        }
+        <span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">if</span> (<span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">$rule_0</span> = <span class="hljs-string" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">"1"</span>){
+            rewrite /(.*) <span class="hljs-symbol" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">https:</span>/<span class="hljs-regexp" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 136, 0) !important; font-size: inherit; overflow-wrap: break-word;">/IP地址/</span><span class="hljs-variable" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(79, 79, 79) !important; font-size: inherit; overflow-wrap: break-word;">$1</span> permanent;                       <span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">break</span>;
+        }
+    }</code><ul class="pre-numbering" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px 0px; list-style: none; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 16px; overflow-wrap: break-word; position: absolute; width: 48px; background-color: rgb(238, 240, 244); top: 0px; left: 0px; text-align: right;"><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">1</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">2</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">3</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">4</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">5</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">6</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">7</li><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px 8px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: inherit; list-style: none; overflow-wrap: break-word; color: rgb(153, 153, 153);">8</li></ul></pre>
+          <h2
+            id="五配置结束上传以后用nginx-t-测试下配置无误-就reload一下nginx服务-检查443端口是否在监听"
+            style="box-sizing: border-box; outline: 0px; margin: 8px 0px
+            16px; padding: 0px; font-size: 24px; font-family:
+            &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+            Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;
+            color: rgb(79, 79, 79); font-weight: 700; line-height: 32px;
+            overflow-wrap: break-word;"><a name="t5" style="box-sizing:
+              border-box; outline: 0px; margin: 0px; padding: 0px;
+              color: rgb(78, 161, 219); text-decoration: none; cursor:
+              pointer; font-family: &quot;Microsoft YaHei&quot;,
+              &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+              &quot;PingFang SC&quot;, sans-serif; background-color:
+              transparent; overflow-wrap: break-word;"></a>五，配置结束上传以后用
+            nginx -t 测试下配置无误 就reload一下nginx服务 检查443端口是否在监听</h2>
+          <pre class="prettyprint" name="code" style="box-sizing: border-box; outline: 0px; margin: 0px 0px 24px; padding: 8px 16px 6px 56px; position: relative; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; overflow: auto hidden; line-height: 22px; color: rgb(0, 0, 0); overflow-wrap: break-word; background-color: rgb(246, 248, 250); border: none;"><code class="hljs applescript has-numbering" onclick="mdcp.signin(event)" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 8px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; display: block; overflow-x: auto; color: rgb(79, 79, 79) !important; background: rgb(246, 248, 250); line-height: 22px; border-radius: 4px; white-space: pre; overflow-wrap: break-word; min-width: 94%; text-size-adjust: none; position: unset;">/usr/<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">local</span>/nginx/sbin/nginx -t
+nginx: <span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">the</span> configuration <span class="hljs-type" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(152, 104, 1); font-size: inherit; overflow-wrap: break-word;">file</span> /usr/<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">local</span>/nginx/conf/nginx.conf syntax <span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">is</span> ok  
+nginx: configuration <span class="hljs-type" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(152, 104, 1); font-size: inherit; overflow-wrap: break-word;">file</span> /usr/<span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">local</span>/nginx/conf/nginx.conf test <span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 0, 136) !important; font-size: inherit; overflow-wrap: break-word;">is</span> successful (显示表示配置文件没有错误)
+
+service nginx reload (重新加载nginx服务)  
+netstat -lan | grep <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">443</span> (查看<span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">443</span>端口)  
+tcp <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">0</span> <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">0</span> <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">0.0</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">.0</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">.0</span>:<span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">443</span> <span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">0.0</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">.0</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 102, 102) !important; font-size: inherit; overflow-wrap: break-word;">.0</span>:* LISTEN (有看到这一行 就表示HTTPS已经在工作了)</code></pre>
+        </div>
+      </div>
+    </article>
+  </body>
+</html>

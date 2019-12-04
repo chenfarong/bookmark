@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>docker使用</title>
+  </head>
+  <body>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <pre class="line-numbers  language-shell" style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; margin: 0px 0px 20px; overflow: auto; overflow-wrap: normal; word-break: break-all; white-space: pre; border-radius: 4px; padding: 1em 1em 1em 3.8em; line-height: 1.5; color: rgb(204, 204, 204); background: rgb(45, 45, 45); text-align: left; word-spacing: 0px; tab-size: 4; hyphens: none; position: relative; counter-reset: linenumber 0; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code class="shell  language-shell" style="box-sizing: border-box; font-size: 1em; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 0px; border: none; vertical-align: unset; white-space: inherit; color: rgb(204, 204, 204); background: none rgba(0, 0, 0, 0); text-align: left; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; position: relative;">docker pull mongo</code></pre>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <pre class="line-numbers  language-shell" style="box-sizing: border-box; font-size: 12px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; margin: 0px 0px 20px; overflow: auto; overflow-wrap: normal; word-break: break-all; white-space: pre; border-radius: 4px; padding: 1em 1em 1em 3.8em; line-height: 1.5; color: rgb(204, 204, 204); background: rgb(45, 45, 45); text-align: left; word-spacing: 0px; tab-size: 4; hyphens: none; position: relative; counter-reset: linenumber 0; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code class="shell  language-shell" style="box-sizing: border-box; font-size: 1em; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; padding: 0px; border: none; vertical-align: unset; white-space: inherit; color: rgb(204, 204, 204); background: none rgba(0, 0, 0, 0); text-align: left; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; position: relative;">docker run -p 27017:27017 -v &lt;LocalDirectoryPath&gt;:/data/db --name docker_mongodb -d mongo</code></pre>
+    <br>
+    <br>
+    docker run --cap-add SYS_TIME&nbsp; -e "TZ=Asia/Shanghai" -v
+    /var/log/gundam/1:/var/log/gundam:rw -v
+    /srv/gundam/config.json:/etc/gundam/config.json:ro -p 3030:3030 -p
+    3031:3031 -p 3032:3032 zero/gundam:2.3.0 <br>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <pre style="box-sizing: border-box; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 13px; white-space: pre-wrap; display: block; padding: 9.5px; margin: 0px 0px 10px; line-height: 1.42857; color: rgb(51, 51, 51); word-break: break-all; overflow-wrap: break-word; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); border-radius: 4px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
+docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
+docker images|grep none|awk '{print $3 }'|xargs docker rmi<br></pre>
+  </body>
+</html>
