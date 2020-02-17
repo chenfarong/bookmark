@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="canonical"
+      href="https://blog.csdn.net/qq_35590198/article/details/78841036">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,
+      user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="report" content="{&quot;pid&quot;:&quot;blog&quot;}">
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="alternate" media="handheld" href="#">
+    <meta name="shenma-site-verification"
+      content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <meta name="csdn-baidu-search"
+      content="{&quot;autorun&quot;:true,&quot;install&quot;:true,&quot;keyword&quot;:&quot;CentOS
+
+
+
+
+
+      7 搭建samba服务_久远成传说-CSDN博客&quot;}">
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT
+      ICON">
+    <title>CentOS 7 搭建samba服务</title>
+    <meta name="description" content="系统:CentOS 7 selinux：关闭 firewall：打开
+      需要达到： 1、samba用户">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+  </head>
+  <body class="nodata ">
+    <div class="main_father clearfix d-flex justify-content-center"
+      style="height:100%;">
+      <div class="container clearfix" id="mainBox">
+        <main>
+          <div class="blog-content-box">
+            <div class="article-header-box">
+              <div class="article-header">
+                <div class="article-title-box">
+                  <h1 class="title-article">CentOS 7 搭建samba服务</h1>
+                </div>
+              </div>
+            </div>
+            <article class="baidu_pl">
+              <div id="article_content" class="article_content clearfix">
+                <link rel="stylesheet"
+href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-833878f763.css">
+                <div id="content_views" class="markdown_views
+                  prism-tomorrow-night">
+                  <!-- flowchart 箭头图标 勿删 -->
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    style="display: none;">
+                    <path stroke-linecap="round" d="M5,0 0,2.5 5,5z"
+                      id="raphael-marker-block"
+                      style="-webkit-tap-highlight-color: rgba(0, 0, 0,
+                      0);"></path> </svg>
+                  <p>系统:CentOS 7<br>
+                    selinux：关闭<br>
+                    firewall：打开<br>
+                    <a
+                      href="https://www.linuxidc.com/Linux/2019-04/158319.htm"
+                      rel="nofollow">参考链接</a><br>
+                    需要达到：</p>
+                  <p>setenforce 0<br>
+                  </p>
+                  <p>
+                    <meta charset="utf-8">
+                    <code class="shell functions" style="margin: 0px !important; padding: 0px !important; border-radius: 0px !important; background: none !important; border: 0px !important; bottom: auto !important; float: none !important; height: auto !important; left: auto !important; line-height: 1.8em !important; outline: 0px !important; overflow: visible !important; position: static !important; right: auto !important; text-align: left; top: auto !important; vertical-align: baseline !important; width: auto !important; box-sizing: content-box !important; font-family: Consolas, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, Courier, monospace !important; font-weight: 400; font-style: normal; font-size: 12px; min-height: auto !important; white-space: pre-wrap; color: rgb(255, 20, 147) !important; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">cat</code><span
+                      style="color: rgb(0, 0, 0); font-family: Consolas,
+                      &quot;Bitstream Vera Sans Mono&quot;,
+                      &quot;Courier New&quot;, Courier, monospace;
+                      font-size: 12px; font-style: normal;
+                      font-variant-ligatures: normal; font-variant-caps:
+                      normal; font-weight: 400; letter-spacing: normal;
+                      orphans: 2; text-align: left; text-indent: 0px;
+                      text-transform: none; white-space: normal; widows:
+                      2; word-spacing: 0px; -webkit-text-stroke-width:
+                      0px; background-color: rgb(244, 244, 244);
+                      text-decoration-style: initial;
+                      text-decoration-color: initial; display: inline
+                      !important; float: none;"><span>&nbsp;</span></span><code class="shell plain" style="margin: 0px !important; padding: 0px !important; border-radius: 0px !important; background: none !important; border: 0px !important; bottom: auto !important; float: none !important; height: auto !important; left: auto !important; line-height: 1.8em !important; outline: 0px !important; overflow: visible !important; position: static !important; right: auto !important; text-align: left; top: auto !important; vertical-align: baseline !important; width: auto !important; box-sizing: content-box !important; font-family: Consolas, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, Courier, monospace !important; font-weight: 400; font-style: normal; font-size: 12px; min-height: auto !important; white-space: pre-wrap; color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">/etc/selinux/config<br><br></code></p>
+                  <p>1、samba用户不能登录CentOS系统；<br>
+                    2、不允许匿名访问，需要使用指定的用户、用户名和密码；<br>
+                    2.1指定的samba路径：/home/data/，用户名：samba 密码：****；<br>
+                    3、需要可读写<br>
+                    开始：<br>
+                    yum安装samba相关的包</p>
+                  <pre><code># yum -y install samba samba-client samba-common
+# cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+</code></pre>
+                  <p>cat /etc/samba/smb.conf</p>
+                  <pre><code># See smb.conf.example for a more detailed config file or
+# read the smb.conf manpage.
+# Run 'testparm' to verify the config is correct after
+# you modified it.
+
+[global]
+        workgroup = WORKGROUP
+        server string = Samba Server %v
+        netbios name = Samba
+        security = user
+        map to guest = Bad User
+        passdb backend = tdbsam
+
+[FileShare]
+        comment = User Files Share
+        path = /home/data/
+		valid users = smb
+		write list = smb
+		writeable = yes
+        printable = no
+		create mask = 0644
+        directory mask = 0755
+</code></pre>
+                  <p>firewall打开服务</p>
+                  <pre><code># firewall-cmd --permanent --add-service=samba
+success
+# systemctl restart firewalld.service
+</code></pre>
+                  <p>创建smb组以及用户和密码</p>
+                  <pre><code># groupadd smb
+# useradd smb -d /home/user/smb -g smb -s /sbin/nologin
+# smbpasswd -a smb
+New SMB password:
+Retype new SMB password:
+Added user smb.
+</code></pre>
+                  <p>设置服务开机启动</p>
+                  <pre><code># systemctl enable smb.service
+# systemctl enable nmb.service
+</code></pre>
+                  <p>samba服务安装完毕！验证的方法 略…</p>
+                </div>
+                <link
+href="https://csdnimg.cn/release/phoenix/mdeditor/markdown_views-b6c3c6d139.css"
+                  rel="stylesheet">
+              </div>
+            </article>
+          </div>
+          <a class="btn-readmore"
+data-report-view="{&quot;mod&quot;:&quot;popu_376&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_35590198/article/details/78841036&quot;,&quot;strategy&quot;:&quot;readmore&quot;}"
+data-report-click="{&quot;mod&quot;:&quot;popu_376&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_35590198/article/details/78841036&quot;,&quot;strategy&quot;:&quot;readmore&quot;}">&nbsp;<svg
+              class="icon chevrondown" aria-hidden="true"> </svg> </a>
+          <script>
+    $("#blog_detail_zk_collection").click(function(){
+        window.csdn.articleCollection()
+    })
+</script>
+          <div id="dmp_ad_58">
+            <div id="kp_box_58" data-pid="58"> <img
+                class="pre-img-lasy"
+data-src="https://kunyu.csdn.net/1.png?p=58&amp;a=386&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=c1e4bd09e5cb442694377f03183ed3bb"></div>
+          </div>
+        </main>
+      </div>
+      <br>
+    </div>
+    <div class="tool-box vertical">
+      <ul class="meau-list">
+        <li class="btn-like-box "> <br>
+        </li>
+        <li class="to-commentBox" id="sharePost"
+data-report-click="{&quot;mod&quot;:&quot;popu_794&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_35590198/article/details/78841036&quot;}"><a
+            class="btn-comments low-height hover-box"><svg class="icon
+              hover-hide" aria-hidden="true" style="padding-top: 3px;">&nbsp;</svg><span
+              class="hover-show text"></span> </a><a
+            class="btn-comments low-height hover-box"> </a>
+          <p class=""><a
+              href="https://blogdev.blog.csdn.net/article/details/99646245"
+              target="view_window">&nbsp;<svg class="shareIcon"
+                aria-hidden="true"></svg></a></p>
+        </li>
+        <li class="widescreen-more">
+          <ul class="widescreen-more-box">
+            <li class="widescreen-more"> <a class="btn-comments
+                hover-box low-height"
+                href="https://blog.csdn.net/qq_35590198/article/details/78857294"
+                title="Debian 7.8 下配置网络的方法">
+                <svg class="icon hover-hide" aria-hidden="true"> &nbsp;</svg><span
+                  class="hover-show text text3"></span> </a> </li>
+          </ul>
+        </li>
+        <li class="to-commentBox to-reward"> <a class="btn-comments
+            low-height hover-box"
+            data-report-click="{&quot;mod&quot;:&quot;popu_830&quot;
+            &quot;dest&quot;:&quot;&quot;}" title="打赏">
+            <svg class="hover-hide" width="24px" height="24px"
+              viewBox="0 0 24 24" version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xlink="http://www.w3.org/1999/xlink">
+              <g stroke="none" stroke-width="1" fill="none"
+                fill-rule="evenodd">
+                <g transform="translate(-1398.000000, -486.000000)"
+                  fill-rule="nonzero">
+                  <g transform="translate(1398.000000, 486.000000)">
+                    &nbsp;&nbsp;&nbsp;</g></g></g></svg><span
+              class="hover-show text"></span> </a> </li>
+      </ul>
+    </div>
+    <div id="tool-post-common">
+      <div class="tool_post_box"> <br>
+      </div>
+      <script>
+    var recommendCount = 79;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var ChannelId = 36;
+    var articleId = "78841036";
+    var commentscount = 0;
+    var islock = false;
+
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "CentOS 7 搭建samba服务_久远成传说-CSDN博客";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = 'tomorrow-night';
+	var highlight = ["CentOS","7","\u642d\u5efa","samba","\u670d\u52a1"];//高亮数组
+
+
+    var RecommendBlogExpertList = [{"user_name":"jun2016425","nick_name":"jun2016425","avatar":"https:\/\/profile.csdnimg.cn\/A\/1\/A\/3_jun2016425","is_expert":false,"article_count":150,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"zh515858237","nick_name":"zh515858237","avatar":"https:\/\/profile.csdnimg.cn\/A\/1\/6\/3_zh515858237","is_expert":false,"article_count":151,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"liuyunshengsir","nick_name":"liuyunshengsir","avatar":"https:\/\/profile.csdnimg.cn\/1\/1\/A\/3_liuyunshengsir","is_expert":false,"article_count":160,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"limingzhong198","nick_name":"\u79cb\u98ce\u745f\u745f","avatar":"https:\/\/profile.csdnimg.cn\/B\/A\/E\/3_limingzhong198","is_expert":false,"article_count":26,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"he9282520","nick_name":"\u72af\u4e86\u9519\u7684\u5b69\u5b50","avatar":"https:\/\/profile.csdnimg.cn\/0\/F\/E\/3_he9282520","is_expert":false,"article_count":21,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"qq_33789722","nick_name":"qq_33789722","avatar":"https:\/\/profile.csdnimg.cn\/4\/0\/E\/3_qq_33789722","is_expert":false,"article_count":25,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"qq_41796937","nick_name":"\u4e36\u6728\u5b50\u674e\u4e36","avatar":"https:\/\/profile.csdnimg.cn\/F\/5\/3\/3_qq_41796937","is_expert":false,"article_count":17,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"weixin_42067548","nick_name":"Peak0524","avatar":"https:\/\/profile.csdnimg.cn\/A\/1\/A\/3_weixin_42067548","is_expert":false,"article_count":4,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"lsc_000","nick_name":"\u8ffd\u98ce\u7684\u8774\u8776","avatar":"https:\/\/profile.csdnimg.cn\/8\/C\/B\/3_lsc_000","is_expert":false,"article_count":27,"rank":"\u5343\u91cc\u4e4b\u5916"},{"user_name":"WeiLanooo","nick_name":"\u541b\u83ab\u7b11.","avatar":"https:\/\/profile.csdnimg.cn\/E\/6\/2\/3_weilanooo","is_expert":false,"article_count":113,"rank":"\u5343\u91cc\u4e4b\u5916"}];
+	var articleType = 1;
+	var</script> </div>
+    <div style="display:none;">
+      <script type="text/javascript" src="https://csdnimg.cn/release/blog_mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+      <script src="//g.csdnimg.cn/baidu-search/1.0.2/baidu-search.js" type="text/javascript"></script>
+    </div>
+  </body>
+</html>

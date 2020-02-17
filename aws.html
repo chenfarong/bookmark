@@ -45,8 +45,155 @@
       &nbsp;<br>
       docker -v /dust/xx/latest/:/dust/xx/<br>
       <br>
-      <br>
-      <br>
+    </b>
+    <table border="1" cellspacing="2" cellpadding="2" width="100%">
+      <tbody>
+        <tr>
+          <td valign="top"><b>安装nodejs10x版本</b><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <meta charset="utf-8">
+            <div class="language-bash highlighter-rouge"
+              style="box-sizing: border-box; margin-bottom: 1rem; color:
+              rgb(33, 37, 41); font-family: -apple-system, system-ui,
+              &quot;segoe ui&quot;, Roboto, &quot;helvetica neue&quot;,
+              Arial, sans-serif, &quot;apple color emoji&quot;,
+              &quot;segoe ui emoji&quot;, &quot;segoe ui symbol&quot;;
+              font-size: 19.2px; font-style: normal;
+              font-variant-ligatures: normal; font-variant-caps: normal;
+              font-weight: 400; letter-spacing: normal; orphans: 2;
+              text-align: left; text-indent: 0px; text-transform: none;
+              white-space: normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial;">
+              <div class="highlight" style="box-sizing: border-box;
+                background-color: rgb(7, 54, 66); color: rgb(147, 161,
+                161); border-radius: 0.3rem; padding: 1.5rem 1.5rem
+                0.5rem;">
+                <pre class="highlight" style="box-sizing: border-box; font-family: SFMono-Regular, Menlo, Monaco, Consolas, &quot;liberation mono&quot;, &quot;courier new&quot;, monospace; font-size: 16.8px; margin-top: 0px; margin-bottom: 1rem; overflow: auto; display: block; color: rgb(147, 161, 161); background-color: rgb(7, 54, 66);"><code style="box-sizing: border-box; font-family: Hack, InputMono, monospace; font-size: inherit; color: inherit; word-break: normal;">curl <span class="nt" style="box-sizing: border-box; color: rgb(38, 139, 210) !important; font-weight: 700 !important;">-sL</span> https://deb.nodesource.com/setup_10.x | <span class="nb" style="box-sizing: border-box; color: rgb(133, 153, 0) !important;">sudo</span> <span class="nt" style="box-sizing: border-box; color: rgb(38, 139, 210) !important; font-weight: 700 !important;">-E</span> bash -
+</code></pre>
+              </div>
+            </div>
+            <meta charset="utf-8">
+            <pre class="highlight" style="box-sizing: border-box; font-family: SFMono-Regular, Menlo, Monaco, Consolas, &quot;liberation mono&quot;, &quot;courier new&quot;, monospace; font-size: 16.8px; margin-top: 0px; margin-bottom: 1rem; overflow: auto; display: block; color: rgb(147, 161, 161); background-color: rgb(7, 54, 66); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="box-sizing: border-box; font-family: Hack, InputMono, monospace; font-size: inherit; color: inherit; word-break: normal;"><span class="nb" style="box-sizing: border-box; color: rgb(133, 153, 0) !important;">sudo </span>apt <span class="nb" style="box-sizing: border-box; color: rgb(133, 153, 0) !important;">install </span>nodejs</code></pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <b style="box-sizing: border-box; font-weight: 600; color: rgb(64,
+      64, 64); font-family: -apple-system, system-ui, &quot;Apple Color
+      Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI
+      Symbol&quot;, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;,
+      &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;,
+      &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+      font-size: 16px; font-style: normal; font-variant-ligatures:
+      normal; font-variant-caps: normal; letter-spacing: normal;
+      orphans: 2; text-align: start; text-indent: 0px; text-transform:
+      none; white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;"><br>
+    </b>
+    <table border="1" cellspacing="2" cellpadding="2" width="100%">
+      <tbody>
+        <tr>
+          <td valign="top"><b>docker mysql5.7 安装</b><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">&nbsp;docker run --net=host --name mysql -v
+            $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v
+            $PWD/data:/mysql_data -e MYSQL_ROOT_PASSWORD=Dust123 -d
+            mysql:5.7<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <b style="box-sizing: border-box; font-weight: 600; color: rgb(64,
+      64, 64); font-family: -apple-system, system-ui, &quot;Apple Color
+      Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI
+      Symbol&quot;, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;,
+      &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;,
+      &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+      font-size: 16px; font-style: normal; font-variant-ligatures:
+      normal; font-variant-caps: normal; letter-spacing: normal;
+      orphans: 2; text-align: start; text-indent: 0px; text-transform:
+      none; white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;"><br>
+    </b>
+    <table border="1" cellspacing="2" cellpadding="2" width="100%">
+      <tbody>
+        <tr>
+          <td valign="top">添加mysql服务器设置<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"># For advice on how to change settings please
+            see<br>
+            #
+http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html<br>
+            <br>
+            [mysqld]<br>
+            #<br>
+            # Remove leading # and set to the amount of RAM for the most
+            important data<br>
+            # cache in MySQL. Start at 70% of total RAM for dedicated
+            server, else 10%.<br>
+            # innodb_buffer_pool_size = 128M<br>
+            #<br>
+            # Remove leading # to turn on a very important data
+            integrity option: logging<br>
+            # changes to the binary log between backups.<br>
+            # log_bin<br>
+            #<br>
+            # Remove leading # to set options mainly useful for
+            reporting servers.<br>
+            # The server defaults are faster for transactions and fast
+            SELECTs.<br>
+            # Adjust sizes as needed, experiment to find the optimal
+            values.<br>
+            # join_buffer_size = 128M<br>
+            # sort_buffer_size = 2M<br>
+            # read_rnd_buffer_size = 2M<br>
+            #datadir=/data/var/lib/mysql<br>
+            #socket=/var/lib/mysql/mysql.sock<br>
+            <br>
+            # Disabling symbolic-links is recommended to prevent
+            assorted security risks<br>
+            symbolic-links=0<br>
+            <br>
+            #log-error=/var/log/mysqld.log<br>
+            #pid-file=/var/run/mysqld/mysqld.pid<br>
+            <br>
+            character-set-server=utf8mb4<br>
+            collation-server=utf8mb4_general_ci<br>
+            <br>
+sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'<br>
+            interactive_timeout=28800000<br>
+            <br>
+            #skip-grant-tables<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <b style="box-sizing: border-box; font-weight: 600; color: rgb(64,
+      64, 64); font-family: -apple-system, system-ui, &quot;Apple Color
+      Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI
+      Symbol&quot;, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;,
+      &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;,
+      &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+      font-size: 16px; font-style: normal; font-variant-ligatures:
+      normal; font-variant-caps: normal; letter-spacing: normal;
+      orphans: 2; text-align: start; text-indent: 0px; text-transform:
+      none; white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial;"><br>
     </b>
   </body>
 </html>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
   <head>
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -69,21 +68,20 @@ href="//imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/information/css/info.cs
                     <div class="detail-hd">
                       <h1 class="info-article-title">centos7
                         安装nginx和php7</h1>
-                      <div class="info-article-tags"> <span
-                          class="info-article-tags-item"> <span
-                            class="info-article-author"> <span
-                              class="info-article-author-figure"
-                              style="display: none;"><img
-src="//mc.qcloudimg.com/static/img/5c9ff044b87633a8298390e2583cde06/avatar.png"></span>
-                            <span class="info-article-author-name">作
-                              者：stevenhuhu</span> </span> </span> <span
-                          class="info-article-tags-item"> <i
-                            class="info-icon-clock"></i>2018-04-20 </span>
-                        <span class="info-article-tags-item"> 来源：51CTO </span>
-                      </div>
+                      <span class="info-article-tags-item"><span
+                          class="info-article-author"></span></span><span
+                        class="info-article-tags-item"><span
+                          class="info-article-author"></span></span>
+                      <div class="info-article-tags">
+                        <hr size="2" width="100%"><span
+                          class="info-article-tags-item"><span
+                            class="info-article-author"></span></span></div>
                     </div>
                     <div class="c-footer-inner">
                       <div class="detail-content">
+                        <p><span><br>
+                            <br>
+                          </span></p>
                         <p><span>centos7 安装nginx和php7</span></p>
                         <p><span><span>centos7系统安装php7会出现一些奇奇怪怪的问题，耽误时间，
                               影响效率，这里推荐直接yum安装</span><br>
@@ -127,6 +125,7 @@ src="//mc.qcloudimg.com/static/img/5c9ff044b87633a8298390e2583cde06/avatar.png">
                         <p>使用 vim 编辑默认的 php7-fpm 配置文件。</p>
                         <pre>vim&nbsp;/etc/php-fpm.d/www.conf</pre>
                         <p>在第 8 行和第 10行，<code>user</code>&nbsp;和&nbsp;<code>group</code>&nbsp;
+
                           赋值为&nbsp;<code>nginx</code>。</p>
                         <pre>user&nbsp;=&nbsp;nginxgroup&nbsp;=&nbsp;nginx</pre>
                         <p>在第 22 行，确保 php-fpm 运行在指定端口。</p>
@@ -146,28 +145,128 @@ systemctl&nbsp;enable&nbsp;nginx</pre>
                         <p><br>
                         </p>
                       </div>
-                      <div class="info-article-label">本文原作者stevenhuhu，原文
-                        链接http://blog.51cto.com/749806593/1933573</div>
+                      第一步 生成一套证书 (已有证书跳过)<br>
+                      先创建目录<br>
+                      mkdir /etc/nginx/key<br>
                       <br>
-                      <div class="c-footer-blogroll-extra">
-                        <div class="c-footer-select J-qcRegionSelector">
-                          <div class="c-footer-dropdown
-                            J-qcFooterRegionList">
-                            <ul class="c-footer-dropdown-menu">
-                              <li class="actived"><a href="javascript:;"
-                                  class="J-qcRegionOption
-                                  J-qcFooterSwitcher"
-                                  data-region="cn_zh"
-                                  hotrep="hp.footer.region.cn">中国站</a></li>
-                              <li><a
-                                  href="https://intl.cloud.tencent.com"
-                                  class="J-qcRegionOption
-                                  J-qcFooterSwitcher" data-region="intl"
-                                  hotrep="hp.footer.region.intl">International</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      进入目录<br>
+                      cd /etc/nginx/key<br>
+                      <br>
+                      1.key的生成 <br>
+                      openssl genrsa -des3 -out server.key 2048 <br>
+                      <br>
+                      这样是生成rsa私钥，des3算法，openssl格式，2048位强度。server.key是密钥文
+                      件名。为了生成这样的密钥，需要一个至少四位的密码。可以通过以下方法生成没有密码的key:<br>
+                      openssl rsa -in server.key -out server.key <br>
+                      <br>
+                      2. 生成CA的crt<br>
+                      openssl req -new -x509 -key server.key -out ca.crt
+                      -days 3650 <br>
+                      <br>
+                      3. csr的生成方法<br>
+                      openssl req -new -key server.key -out server.csr <br>
+                      <br>
+                      需要依次输入国家，地区，组织，email。最重要的是有一个common
+                      name，可以写你的名字或者域名。如果为了https申请，这个必须和域名吻合，否则会引发浏览器警报。生成的csr文件交给CA签名后形成服务端自己
+                      的证书。 <br>
+                      <br>
+                      &nbsp;<br>
+                      4. crt生成方法<br>
+                      openssl x509 -req -days 3650 -in server.csr -CA
+                      ca.crt -CAkey server.key -CAcreateserial -out
+                      server.crt<br>
+                      <br>
+                      输入key的密钥后，完成证书生成。-CA选项指明用于被签名的csr证书，-CAkey选项指明用于签名
+                      的密钥，-CAserial指明序列号文件，而-CAcreateserial指明文件不存在时自动生成。<br>
+                      <br>
+                      证书合并：<br>
+                      cat server.key server.crt &gt; server.pem<br>
+                      <br>
+                      第二步 配置nginx<br>
+                      进入站点目录<br>
+                      cd /etc/nginx/sites-enabled<br>
+                      <br>
+                      拷贝一份单独的配置文件<br>
+                      cp default wss.xx.game<br>
+                      <br>
+                      编辑配置文件&nbsp; 粘贴以下文本<br>
+                      vi wss.xx.game<br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      upstream wss_xx_game{<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+                      192.168.1.47:8086 weight=1;&nbsp; #目标地址<br>
+                      }<br>
+                      <br>
+                      server {<br>
+                      &nbsp;listen 443
+                      ssl;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      #监听端口<br>
+                      &nbsp;server_name localhost;&nbsp;&nbsp; #访问域名<br>
+                      &nbsp;ssl_certificate&nbsp;&nbsp; /etc/nginx/key/
+                      server.pem;&nbsp;&nbsp;&nbsp; #证书文件<br>
+                      &nbsp;ssl_certificate_key /etc/nginx/key/
+                      server.key;&nbsp;&nbsp; #证书文件<br>
+                      &nbsp;ssl_session_timeout 5m;<br>
+                      &nbsp;ssl_ciphers
+ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;<br>
+                      &nbsp;ssl_protocols TLSv1 TLSv1.1 TLSv1.2;<br>
+                      &nbsp;ssl_prefer_server_ciphers on;<br>
+                      &nbsp;location / {<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp; proxy_redirect off;<br>
+                      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp; proxy_pass http://wss_xx_game;<br>
+                      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp; proxy_http_version 1.1;<br>
+                      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp; proxy_set_header Upgrade
+                      $http_upgrade;<br>
+                      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp; proxy_set_header Connection
+                      upgrade;<br>
+                      &nbsp;&nbsp;&nbsp; }<br>
+                      }<br>
+                      <br>
+                      <br>
+                      好了按下ecs&nbsp; 输入 :wq 保存<br>
+                      <br>
+                      重新加载nginx&nbsp;&nbsp; 或者重启nginx<br>
+                      nginx -s reload<br>
+                      <br>
+                      php 设置<br>
+                      <table border="1" cellspacing="2" cellpadding="2"
+                        width="100%">
+                        <tbody>
+                          <tr>
+                            <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              location ~ \.php$ {<br>
+                              #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              /var/www/html/where;<br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              fastcgi_pass&nbsp;&nbsp; 127.0.0.1:9000;<br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              fastcgi_index&nbsp; index.php;<br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              fastcgi_param&nbsp; SCRIPT_FILENAME&nbsp;
+                              $document_root$fastcgi_script_name;<br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              fastcgi_params;<br>
+                              &nbsp;&nbsp;&nbsp; }<br>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
                     </div>
                   </div>
                 </div>

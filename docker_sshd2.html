@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>game_entry.html</title>
+  </head>
+  <body>
+    Docker中centos如何启动sshd服务<br>
+    原创SAGGITARGODESS XM 最后发布于2019-03-27 17:16:18 阅读数 695&nbsp; 收藏<br>
+    展开<br>
+    1、启动一个docker容器:<br>
+    <br>
+    # docker run -it centos：latest /bin/bash<br>
+    <br>
+    这样就会新建一个docker容器,并且进入容器的bash中 <br>
+    2、安装sshd：<br>
+    <br>
+    # yum -y install openssh-server -y<br>
+    # yum -y install openssh-clients -y<br>
+    <br>
+    3、启动sshd服务：<br>
+    <br>
+    # /usr/sbin/sshd -D<br>
+    <br>
+    我的报一下错误<br>
+    <br>
+    Could not load host key: /etc/ssh/ssh_host_rsa_key<br>
+    Could not load host key: /etc/ssh/ssh_host_ecdsa_key<br>
+    Could not load host key: /etc/ssh/ssh_host_ed25519_key<br>
+    <br>
+    此时，依次执行下列命令： <br>
+    一路按回车键确认<br>
+    <br>
+    # ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ""<br>
+    # ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ""<br>
+    # ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ""<br>
+    <br>
+    <br>
+    再启动sshd服务，一切正常。 <br>
+    4、编辑sshd_config配置文件<br>
+    <br>
+    # vim /etc/ssh/sshd_config<br>
+    <br>
+    <br>
+    找到UsePAM yes这一段配置，将其改成UsePAM no<br>
+    <br>
+    UsePAM no<br>
+    #UsePAM yes<br>
+    <br>
+    <br>
+    5、修改root的密码，如果不能passwd，执行：# yum -y install passwd<br>
+    <br>
+    # passwd root<br>
+    Changing password for user root.<br>
+    New password:<br>
+    <br>
+    <br>
+    两次输入密码 <br>
+    6、改完密码执行exit命令退出，这时会回到宿主机器的shell，执行下列命令将容器提交到镜像：<br>
+    <br>
+    # docker commit containerid imagename<br>
+    <br>
+    <br>
+    这里的containerid是容器的id，imagename就是提交时候镜像的名称，第一次提交的时候最好使用一个新的名称，不要覆盖了原有
+    的干净的centos镜像。 <br>
+    容器id可以通过docker ps -l命令查看到，启动容器后默认的主机名其实就是容器id。 <br>
+    例如：# docker commit 67bb1912a373 sshd-images <br>
+    7、通过docker run启动一个新的容器，参数-d表示后台运行，-p表示docker到主机的端口的映射<br>
+    <br>
+    # docker run -d -p 10022:22 imagename /usr/sbin/sshd -D<br>
+    <br>
+    <br>
+    如果启动没问题的话，就可以登录到容器了：<br>
+    <br>
+    # ssh root@localhost -p 10022<br>
+    <br>
+    <br>
+    挂载一个主机目录作为数据卷 <br>
+    使用-v标记也可以指定挂载一个本地的已有目录到容器中去作为数据卷：<br>
+    <br>
+    # docker run -d -p 10022:22 --name web -v /usr/webapp:/opt/webapp
+    sshd-images:latest /usr/sbin/sshd -D<br>
+    <br>
+    <br>
+    上面的命令加载主机的/usr/webapp目录到容器的/opt/webapp目录<br>
+    &nbsp;<br>
+    <br>
+-----------------------------------------------------------------------------------------------------------------------------<br>
+    <br>
+    先启动一个纯的centos容器<br>
+    <br>
+    docker run -it --name=sample centos /bin/bash<br>
+    <br>
+    然后打ssh localhost会发现如下错误。<br>
+    <br>
+    bash: ssh: command not found<br>
+    接下去就教你如何能够ssh localhost.<br>
+    <br>
+    yum install openssh-server -y<br>
+    yum install openssh-clients -y<br>
+    <br>
+    <br>
+    这时候再试一下ssh localhost，发现错误改变： <br>
+    <br>
+    ssh: connect to host localhost port 22: Cannot assign requested
+    address<br>
+    说明sshd服务还没有开启。用ps -ef也可以验证这一点。<br>
+    <br>
+    由于是docker里面的centos，所以service和systemctl都不好用。<br>
+    <br>
+    尝试手动运行/usr/sbin/sshd<br>
+    <br>
+    报如下错误：<br>
+    <br>
+    Could not load host key: /etc/ssh/ssh_host_rsa_key<br>
+    Could not load host key: /etc/ssh/ssh_host_ecdsa_key<br>
+    Could not load host key: /etc/ssh/ssh_host_ed25519_key<br>
+    sshd: no hostkeys available -- exiting.<br>
+    <br>
+    手动执行/usr/sbin/sshd-keygen -A<br>
+    <br>
+    ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key<br>
+    ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key<br>
+    ssh-keygen -t ed25519 -f&nbsp; /etc/ssh/ssh_host_ed25519_key<br>
+    再执行/usr/sbin/sshd成功。<br>
+    <br>
+    为了免密码本机跳本机，执行如下命令：<br>
+    <br>
+    ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa<br>
+    cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys<br>
+    chmod 0600 ~/.ssh/authorized_keys<br>
+    <br>
+    至此，执行ssh localhost就能成功。<br>
+    ————————————————<br>
+    版权声明：本文为CSDN博主「SAGGITARGODESS XM」的原创文章，遵循 CC 4.0 BY-SA
+    版权协议，转载请附上原文出处链接及本声明。<br>
+    原文链接：https://blog.csdn.net/xuezhangjun0121/article/details/88850144<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

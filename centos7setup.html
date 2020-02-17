@@ -7,70 +7,276 @@
   <body>
     <br>
     <br>
+    Centos7 游戏服务器配置<br>
     <br>
     <br>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">安装mongodb数据库<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <meta charset="utf-8">
+            <span style="color: rgb(73, 71, 71); font-family: Akzidenz,
+              &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+              font-size: 16px; font-style: normal;
+              font-variant-ligatures: normal; font-variant-caps: normal;
+              font-weight: 400; letter-spacing: normal; orphans: 2;
+              text-align: start; text-indent: 0px; text-transform: none;
+              white-space: normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial; display: inline
+              !important; float: none;">Create a<span>&nbsp;</span></span><code
+              class="docutils literal" style="box-sizing: border-box;
+              font-family: &quot;Source Code Pro&quot;, monospace;
+              font-size: 16px; color: rgb(0, 0, 0); font-style: normal;
+              font-variant-ligatures: normal; font-variant-caps: normal;
+              font-weight: 400; letter-spacing: normal; orphans: 2;
+              text-align: start; text-indent: 0px; text-transform: none;
+              white-space: normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial;"><span class="pre"
+                style="box-sizing: border-box; font-family: &quot;Source
+                Code Pro&quot;, monospace;">/etc/yum.repos.d/mongodb-org-4.2.repo</span></code></td>
+        </tr>
+        <tr>
+          <td valign="top">[mongodb-org-4.2]<br>
+            name=MongoDB Repository<br>
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/<br>
+            gpgcheck=1<br>
+            enabled=1<br>
+            gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <meta charset="utf-8">
+            <pre style="box-sizing: border-box; overflow: auto; white-space: pre; word-break: break-all; font-family: &quot;Source Code Pro&quot;, monospace; font-size: 14px; background: url(&quot;https://media.mongodb.org/code-block-bg.png&quot;) rgb(245, 246, 247); display: block; line-height: 24px; overflow-wrap: normal; border-top: none; border-right: none; border-bottom: none; border-left: 5px solid rgb(73, 71, 71); border-image: initial; border-radius: 0px; padding: 2px 12px 24px; color: rgb(34, 34, 34); margin: 0px auto; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">sudo yum install -y mongodb-org<br></pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <br>
     <meta charset="utf-8">
-    <span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">yum -y </span><span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(166, 38, 164); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial;">install</span><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> centos-</span><span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(166, 38, 164); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial;">release</span><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">-scl</span>
+    <span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><br><br></span>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">安装php的<span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: 14px; overflow-wrap: break-word; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">composer</span></td>
+        </tr>
+        <tr>
+          <td valign="top"><span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: 14px; overflow-wrap: break-word; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">//下载安装脚本 － composer-setup.php － 到当前目录</span><span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+php -r "</span><span class="hljs-function" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 14px; overflow-wrap: break-word; color: rgb(79, 79, 79); font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">copy(<span class="hljs-string" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">'https://install.phpcomposer.com/installer'</span>, <span class="hljs-string" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">'composer-setup.php'</span>)</span><span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">;"
+</span><span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: 14px; overflow-wrap: break-word; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">//执行安装过程。</span><span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+php composer-setup</span><span class="hljs-class" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 14px; overflow-wrap: break-word; color: rgb(79, 79, 79); font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">.php</span><span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+</span><span class="hljs-comment" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(136, 0, 0) !important; font-style: italic; font-size: 14px; overflow-wrap: break-word; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">//删除安装脚本</span><span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+php -r "</span><span class="hljs-function" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; font-size: 14px; overflow-wrap: break-word; color: rgb(79, 79, 79); font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">unlink(<span class="hljs-string" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; color: rgb(0, 153, 0) !important; font-size: inherit; overflow-wrap: break-word;">'composer-setup.php'</span>)</span><span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">;"</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><br><br><br><br></span>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">安装MysqlClient5.7<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">wget
+            http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm<br>
+            rpm -ivh mysql57-community-release-el7-8.noarch.rpm<br>
+            yum install mysql-community-client</td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(79, 79, 79); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: common-ligatures; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(246, 248, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><br></span>
+    <br>
+    <br>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">安装开发工具<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">yum -y </span><span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(166, 38, 164); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial;">install</span><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> centos-</span><span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(166, 38, 164); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial;">release</span><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">-scl</span>
+            yum -y <span class="hljs-keyword" style="box-sizing:
+              border-box; outline: 0px; margin: 0px; padding: 0px;
+              font-family: &quot;Source Code Pro&quot;, &quot;DejaVu
+              Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous
+              Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco,
+              Consolas, Inconsolata, Courier, monospace, &quot;PingFang
+              SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color:
+              rgb(166, 38, 164); overflow-wrap: break-word; font-size:
+              14px;">install</span> devtoolset<span class="hljs-number"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; font-family: &quot;Source Code Pro&quot;,
+              &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+              &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+              Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+              &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+              sans-serif; color: rgb(152, 104, 1); overflow-wrap:
+              break-word; font-size: 14px;">-8</span>-gcc devtoolset<span
+              class="hljs-number" style="box-sizing: border-box;
+              outline: 0px; margin: 0px; padding: 0px; font-family:
+              &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
+              &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
+              &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas,
+              Inconsolata, Courier, monospace, &quot;PingFang SC&quot;,
+              &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(152,
+              104, 1); overflow-wrap: break-word; font-size: 14px;">-8</span>-gcc-c++
+
+
+            devtoolset<span class="hljs-number" style="box-sizing:
+              border-box; outline: 0px; margin: 0px; padding: 0px;
+              font-family: &quot;Source Code Pro&quot;, &quot;DejaVu
+              Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous
+              Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco,
+              Consolas, Inconsolata, Courier, monospace, &quot;PingFang
+              SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color:
+              rgb(152, 104, 1); overflow-wrap: break-word; font-size:
+              14px;">-8</span>-binutils<br>
+            scl <span class="hljs-keyword" style="box-sizing:
+              border-box; outline: 0px; margin: 0px; padding: 0px;
+              font-family: &quot;Source Code Pro&quot;, &quot;DejaVu
+              Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous
+              Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco,
+              Consolas, Inconsolata, Courier, monospace, &quot;PingFang
+              SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color:
+              rgb(166, 38, 164); overflow-wrap: break-word; font-size:
+              14px;">enable</span> devtoolset<span class="hljs-number"
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; font-family: &quot;Source Code Pro&quot;,
+              &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;,
+              &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;,
+              Menlo, Monaco, Consolas, Inconsolata, Courier, monospace,
+              &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
+              sans-serif; color: rgb(152, 104, 1); overflow-wrap:
+              break-word; font-size: 14px;">-8</span> bash</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
     <div class="hljs-ln-line" style="box-sizing: border-box; outline:
       0px; margin: 0px; padding: 0px; overflow-wrap: break-word;
       font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans
       Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;,
       &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata,
       Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft
-      YaHei&quot;, sans-serif; font-size: 14px;">yum -y <span
-        class="hljs-keyword" style="box-sizing: border-box; outline:
-        0px; margin: 0px; padding: 0px; font-family: &quot;Source Code
-        Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
-        Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
-        Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
-        monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
-        sans-serif; color: rgb(166, 38, 164); overflow-wrap: break-word;
-        font-size: 14px;">install</span> devtoolset<span
-        class="hljs-number" style="box-sizing: border-box; outline: 0px;
-        margin: 0px; padding: 0px; font-family: &quot;Source Code
-        Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
-        Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
-        Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
-        monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
-        sans-serif; color: rgb(152, 104, 1); overflow-wrap: break-word;
-        font-size: 14px;">-8</span>-gcc devtoolset<span
-        class="hljs-number" style="box-sizing: border-box; outline: 0px;
-        margin: 0px; padding: 0px; font-family: &quot;Source Code
-        Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
-        Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
-        Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
-        monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
-        sans-serif; color: rgb(152, 104, 1); overflow-wrap: break-word;
-        font-size: 14px;">-8</span>-gcc-c++ devtoolset<span
-        class="hljs-number" style="box-sizing: border-box; outline: 0px;
-        margin: 0px; padding: 0px; font-family: &quot;Source Code
-        Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
-        Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
-        Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
-        monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
-        sans-serif; color: rgb(152, 104, 1); overflow-wrap: break-word;
-        font-size: 14px;">-8</span>-binutils<br>
-      scl <span class="hljs-keyword" style="box-sizing: border-box;
-        outline: 0px; margin: 0px; padding: 0px; font-family:
-        &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;,
-        &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid
-        Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
-        monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
-        sans-serif; color: rgb(166, 38, 164); overflow-wrap: break-word;
-        font-size: 14px;">enable</span> devtoolset<span
-        class="hljs-number" style="box-sizing: border-box; outline: 0px;
-        margin: 0px; padding: 0px; font-family: &quot;Source Code
-        Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu
-        Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans
-        Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier,
-        monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;,
-        sans-serif; color: rgb(152, 104, 1); overflow-wrap: break-word;
-        font-size: 14px;">-8</span> bash</div>
-    <span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><ol class="hljs-ln" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; list-style: none; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; border-collapse: collapse; font-size: 16px; overflow: hidden; overflow-wrap: break-word; color: rgb(56, 58, 66); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; width: 698px;"><li style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; list-style: none; font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif; overflow-wrap: break-word; height: 22px;"><br></li></ol></span><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><meta charset="utf-8"></span><br>
+      YaHei&quot;, sans-serif; font-size: 14px;"><br>
+      <br>
+    </div>
+    <span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"></span>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">安装nodejs 10版本<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><span style="color: rgb(77, 77, 77);
+              font-family: &quot;Microsoft YaHei&quot;, &quot;SF Pro
+              Display&quot;, Roboto, Noto, Arial, &quot;PingFang
+              SC&quot;, sans-serif; font-size: 16px; font-style: normal;
+              font-variant-ligatures: common-ligatures;
+              font-variant-caps: normal; font-weight: 400;
+              letter-spacing: normal; orphans: 2; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial; display: inline
+              !important; float: none;">curl -sL<span>&nbsp;</span></span><a
+              href="https://rpm.nodesource.com/setup_10.x"
+              rel="nofollow" style="box-sizing: border-box; outline:
+              0px; margin: 0px; padding: 0px; color: rgb(103, 149, 181);
+              text-decoration: none; cursor: pointer; font-family:
+              &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+              Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;
+              background-color: rgb(255, 255, 255); overflow-wrap:
+              break-word; font-size: 16px; font-style: normal;
+              font-variant-ligatures: common-ligatures;
+              font-variant-caps: normal; font-weight: 400;
+              letter-spacing: normal; orphans: 2; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px;">https://rpm.nodesource.com/setup_10.x</a><span
+              style="color: rgb(77, 77, 77); font-family:
+              &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+              Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;
+              font-size: 16px; font-style: normal;
+              font-variant-ligatures: common-ligatures;
+              font-variant-caps: normal; font-weight: 400;
+              letter-spacing: normal; orphans: 2; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial; display: inline
+              !important; float: none;"><span>&nbsp;</span>| bash -</span><br
+              style="box-sizing: border-box; outline: 0px; margin: 0px;
+              padding: 0px; overflow-wrap: break-word; color: rgb(77,
+              77, 77); font-family: &quot;Microsoft YaHei&quot;,
+              &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+              &quot;PingFang SC&quot;, sans-serif; font-size: 16px;
+              font-style: normal; font-variant-ligatures:
+              common-ligatures; font-variant-caps: normal; font-weight:
+              400; letter-spacing: normal; orphans: 2; text-align:
+              start; text-indent: 0px; text-transform: none;
+              white-space: normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial;">
+            <span style="color: rgb(77, 77, 77); font-family:
+              &quot;Microsoft YaHei&quot;, &quot;SF Pro Display&quot;,
+              Roboto, Noto, Arial, &quot;PingFang SC&quot;, sans-serif;
+              font-size: 16px; font-style: normal;
+              font-variant-ligatures: common-ligatures;
+              font-variant-caps: normal; font-weight: 400;
+              letter-spacing: normal; orphans: 2; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; background-color: rgb(255,
+              255, 255); text-decoration-style: initial;
+              text-decoration-color: initial; display: inline
+              !important; float: none;">yum install -y nodejs</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"></span><span style="color: rgb(56, 58, 66); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><meta charset="utf-8"></span>
+    <meta charset="utf-8">
+    <span style="color: rgb(77, 77, 77); font-family: &quot;Microsoft
+      YaHei&quot;, &quot;SF Pro Display&quot;, Roboto, Noto, Arial,
+      &quot;PingFang SC&quot;, sans-serif; font-size: 16px; font-style:
+      normal; font-variant-ligatures: common-ligatures;
+      font-variant-caps: normal; font-weight: 400; letter-spacing:
+      normal; orphans: 2; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      background-color: rgb(255, 255, 255); text-decoration-style:
+      initial; text-decoration-color: initial; display: inline
+      !important; float: none;"></span><br>
+    <br>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">安装docker-ce<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <br>
     <br>
-    <table border="1" cellspacing="2" cellpadding="2" width="100%">
+    <br>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
       <tbody>
         <tr>
           <td valign="top">
@@ -135,6 +341,76 @@
               initial;">Then, install FileZilla with yum command:</p>
             <pre class="cli" style="margin: 0px 0px 15px; padding: 0.05em 1em; border-width: 0px 0px 0px 8px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: rgb(3, 74, 101); border-image: initial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; font-size: 17px; line-height: 1.5; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; vertical-align: baseline; overflow: auto; hyphens: none; text-shadow: rgb(204, 204, 204) 0px 1px; color: rgb(0, 0, 0); box-shadow: rgb(151, 151, 151) 0px 1px 5px; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code class="none" style="margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;">sudo yum -y install filezilla</code></pre>
           </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <pre class="cli" style="margin: 0px 0px 15px; padding: 0.05em 1em; border-width: 0px 0px 0px 8px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: rgb(3, 74, 101); border-image: initial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; font-size: 17px; line-height: 1.5; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; vertical-align: baseline; overflow: auto; hyphens: none; text-shadow: rgb(204, 204, 204) 0px 1px; color: rgb(0, 0, 0); box-shadow: rgb(151, 151, 151) 0px 1px 5px; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code class="none" style="margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;">docker pull mysql:5.7<br></code></pre>
+    <br>
+    <meta charset="utf-8">
+    <span class="hljs-selector-tag" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(167, 29, 93); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">docker</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> </span><span class="hljs-selector-tag" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(167, 29, 93); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">pull</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> </span><span class="hljs-selector-tag" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(167, 29, 93); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">mysql</span><span class="hljs-selector-pseudo" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(121, 93, 163); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">:5.7<br><br></span><br>
+    <span class="hljs-selector-pseudo" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(121, 93, 163); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><meta charset="utf-8"><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">docker run --</span><span class="hljs-keyword" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(167, 29, 93); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">name</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> mysql5.</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">7</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> -p </span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">3306</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">:</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">3306</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> -e MYSQL_ROOT_PASSWORD=</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">123456</span><span style="color: rgb(51, 51, 51); font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(243, 244, 245); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> -d mysql:</span><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">5.7<br>docker run --net=host --name mysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/mysql_data -e MYSQL_ROOT_PASSWORD=Dust123 -d mysql:5.7<br><br><br><br>安装可靠的免费证书<br></span></span>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">https证书<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <meta charset="utf-8">
+            <a
+              href="https://letsencrypt.org/zh-cn/docs/certificate-compatibility/">https://letsencrypt.org/zh-cn/docs/certificate-compatibility/</a></td>
+        </tr>
+        <tr>
+          <td valign="top">参考链接<br>
+            <meta charset="utf-8">
+            <a href="https://www.jianshu.com/p/6ea81a7b768f">https://www.jianshu.com/p/6ea81a7b768f</a><br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="hljs-selector-pseudo" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(121, 93, 163); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><br><br><br><br></span></span>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">docker安装邮件服务器<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <meta charset="utf-8">
+            <a href="https://www.itmanbu.com/docker-mail-server.html">https://www.itmanbu.com/docker-mail-server.html</a><br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="hljs-selector-pseudo" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; color: rgb(121, 93, 163); overflow-wrap: break-word; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="hljs-number" style="box-sizing: border-box; outline: 0px; margin: 0px; padding: 0px; font-family: &quot;Source Code Pro&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Anonymous Pro&quot;, &quot;Droid Sans Mono&quot;, Menlo, Monaco, Consolas, Inconsolata, Courier, monospace, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif; overflow-wrap: break-word; font-size: 14px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><br><br><br><br></span></span>
+    <table cellspacing="2" cellpadding="2" width="100%" border="1">
+      <tbody>
+        <tr>
+          <td valign="top">docker安装xwiki<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <meta charset="utf-8">
+            <span style="color: rgb(51, 51, 51); font-family:
+              -apple-system, Helvetica, Arial, sans-serif; font-size:
+              15px; font-style: normal; font-variant-ligatures: normal;
+              font-variant-caps: normal; font-weight: 400;
+              letter-spacing: normal; orphans: 2; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: 2; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; text-decoration-style:
+              initial; text-decoration-color: initial; display: inline
+              !important; float: none;">docker run --rm -it -p
+              8080:32781 xwiki<br>
+            </span></td>
         </tr>
       </tbody>
     </table>
