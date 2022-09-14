@@ -46,6 +46,8 @@
 
 - Linux操作系统（mongodb)
 
+- 内置SQLite数据库
+
 
 
 
